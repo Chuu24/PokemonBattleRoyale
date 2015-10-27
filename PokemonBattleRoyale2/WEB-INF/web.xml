@@ -1,0 +1,191 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                      http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0"
+  metadata-complete="true">  
+
+    <context-param> 
+            <description>
+                    Usuario base de datos
+            </description> 
+            <param-name>
+                    usuario
+            </param-name> 
+            <param-value>
+                    root
+            </param-value> 
+    </context-param>
+
+    <context-param> 
+            <description>
+                    Password base de datos
+            </description> 
+            <param-name>
+                    pass
+            </param-name> 
+            <param-value>
+                    ldmpt24*
+            </param-value> 
+    </context-param>
+    
+    <servlet>
+        <servlet-name>BuscarPokemons</servlet-name>
+        <servlet-class>BuscaPokemon</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>BuscarPokemons</servlet-name>
+        <url-pattern>/explorarPokemon</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CapturarPokemons</servlet-name>
+        <servlet-class>CapturaPokemon</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>CapturarPokemons</servlet-name>
+        <url-pattern>/capturaPokemon</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Pokemart</servlet-name>
+        <servlet-class>Tienda</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Pokemart</servlet-name>
+        <url-pattern>/pokemart</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>MyTeam</servlet-name>
+        <servlet-class>MyTeam</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>MyTeam</servlet-name>
+        <url-pattern>/myteam</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>BuyStuff</servlet-name>
+        <servlet-class>Buy</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>BuyStuff</servlet-name>
+        <url-pattern>/buyStuff</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ThrowPokeball</servlet-name>
+        <servlet-class>ThrowPokeball</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ThrowPokeball</servlet-name>
+        <url-pattern>/throwPokeball</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>NicknameIt</servlet-name>
+        <servlet-class>NicknameIt</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>NicknameIt</servlet-name>
+        <url-pattern>/nicknameit</url-pattern>
+    </servlet-mapping>
+	
+	    <servlet>
+        <servlet-name>AltaUsuario</servlet-name>
+        <servlet-class>AltaUsuario</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>AltaUsuario</servlet-name>
+        <url-pattern>/altaUsuario</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Login</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>Logout</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>Profile</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/profile</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SetTeam</servlet-name>
+        <servlet-class>SetTeam</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SetTeam</servlet-name>
+        <url-pattern>/setTeam</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Ratings</servlet-name>
+        <servlet-class>Ratings</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Ratings</servlet-name>
+        <url-pattern>/ratings</url-pattern>
+    </servlet-mapping>
+	<servlet>
+    	<servlet-name>
+    		AdInfo
+    	</servlet-name>
+    	<servlet-class>
+    		AdInfo
+    	</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>
+    		AdInfo	
+    	</servlet-name>
+    	<url-pattern>
+    		/AdInfo
+    	</url-pattern>
+    </servlet-mapping>
+    <servlet>
+    	<servlet-name>
+    		DesInfo
+    	</servlet-name>
+    	<servlet-class>
+    		DesInfo
+    	</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>
+    		DesInfo
+    	</servlet-name>
+    	<url-pattern>
+    		/DesInfo
+    	</url-pattern>
+    </servlet-mapping>
+</web-app>
