@@ -76,11 +76,11 @@
                         		<table class="table-responsive">
                             		<tr>
                                 		<td>Username: </td>
-                                    	<td><input name="user" type="text" class="noborder txtfield"></td>
+                                                <td><input name="user" type="text" class="noborder txtfield" maxlength="30"></td>
                                 	</tr>
                                 	<tr>
                                 		<td>Password: </td>
-                                    	<td><input name="pass" type="password" class="noborder txtfield"></td>
+                                                <td><input name="pass" type="password" class="noborder txtfield" maxlength="20"></td>
                                 	</tr>
                                     <tr>
                                     	<td style="font-size:12px; color:#0CF;"><a href="register.jsp">Register now!</a></td>
@@ -93,8 +93,8 @@
                             	</form>
                             </div>
                     	</div><!-- Contain me --->
-                    </div><!--Row Contenido --->
-                </div><!-- Col Md 10 --->
+                    </div>
+                </div>
                 <div class="col-md-1"></div>
             </div><!-- Row --->
 <!----- AQUÍ SE ACABA EL CONTENIDO Y EMPIEZA EL FOOTER. CONTENIDO ACABA AQUÍ. FOOTER EMPIEZA AQUÍ. --------->

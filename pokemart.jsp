@@ -30,7 +30,7 @@
                 	&nbsp;<p>
                     <img src="img/medical.png"><br/>Pok&eacute;Center
                 </div></a>
-                <a href="./pokemart"><div class="col-md-1 mart">
+                <a href="./pokemart"><div class="col-md-1 mart selected4">
 					&nbsp;<p>
                     <img src="img/mart.png"><br/>Pok&eacute;Mart
                 </div></a>

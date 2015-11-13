@@ -54,7 +54,7 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <a href="./profile"><div class="col-md-1 profile">
+                <a href="./profile"><div class="col-md-1 profile selected9">
                 	&nbsp;<p>
                     <img src="img/profile.png"><br/>Profile
                 </div>
@@ -74,14 +74,17 @@
                             <img src="img/train/01.jpg"  /> ${sessionScope.username} | <a href="./logout">Logout</a>
                         </c:if>
                     </div>
+                    <div class="row">
+                        
+                    </div>
                 	<div class="row contenido">
                     	<div class="containmemore">
                             <div id="register">
                             	<h3 style="font-family:'Xolo';">Profile</h3>
                                 <table class="table-responsive">
-									<tr>
+                                    <tr>
                                         <td>
-                                                                        <table class="table-responsive">
+                                        <table class="table-responsive">
                                 	<tr>
                                     	<td class="padmemore">Name: </td>
                                         <td><c:out value="${name}" /></td>

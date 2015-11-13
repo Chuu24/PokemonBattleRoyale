@@ -38,7 +38,7 @@
                     <img src="img/global.png"><br/>
                     GTS
                 </div></a>
-                <a href="./ratings"><div class="col-md-1 rate">
+                <a href="./ratings"><div class="col-md-1 rate selected6">
                     &nbsp;<p>
                     <img src="img/rate.png"><br/>
                     Ratings

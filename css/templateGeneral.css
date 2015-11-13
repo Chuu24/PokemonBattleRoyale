@@ -26,10 +26,10 @@
 body
 {
     /*background-color: #2E3843;*/
-	background-color:#EFEFEF;
+    background-color:#EFEFEF;
     background-repeat: repeat;
-	font-family:Xolo;
-	overflow-x:hidden;
+    font-family:Xolo;
+    overflow-x:hidden;
 }
 
 a, a:visited, a:hover {
@@ -199,27 +199,31 @@ h1, h2, h3, h4{
 	background-color: #2E3843;
 	color:#FFF;
 }
-.pokedex:hover{
+.pokedex:hover, .selected1{
 	background-color:#F33;
 }
-.explore:hover{
+.explore:hover, .selected2{
 	background-color:#FC3;
 }
-.center:hover{
+.center:hover, .selected3{
 	background-color:#06F;
 }
-.mart:hover{
+.mart:hover, .selected4{
 	background-color:#FF0079;
 }
-.gts:hover{
+.gts:hover, .selected5{
 	background-color:#9F00FF;
-}.rate:hover{
+}
+.rate:hover, .selected6{
 	background-color:#FF8600;
-}.friends:hover{
+}
+.friends:hover, .selected7{
 	background-color:#F39;
-}.team:hover{
+}
+.team:hover, .selected8{
 	background-color:#6F3;
-}.profile:hover{
+}
+.profile:hover, .selected9{
 	background-color:#0CF;
 }
 .pokedexTable{

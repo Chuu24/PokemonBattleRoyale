@@ -49,7 +49,7 @@
                     <img src="img/battle.png"><br>
                     Battle
                 </div></a>
-                <a href="./myteam"><div class="col-md-1 team">
+                <a href="./myteam"><div class="col-md-1 team selected8">
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>

@@ -22,7 +22,7 @@
                 	&nbsp;<p>
                     <img src="img/dex.png"><br/>Pok&eacute;dex
                 </div></a>
-                <a href="explore.jsp"><div class="col-md-1 explore">
+                <a href="explore.jsp"><div class="col-md-1 explore selected2">
                 	&nbsp;
                 	<p>
                 	<img src="img/explore.png"><br/>Explore

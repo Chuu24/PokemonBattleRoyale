@@ -19,7 +19,7 @@
     <body>
             <div class="row" id="header">
             	<div class="col-md-1"></div>
-                <a href="index.jsp"><div class="col-md-2 pokedex">
+                <a href="index.jsp"><div class="col-md-2 pokedex selected1">
                 	&nbsp;<p>
                     <img src="img/dex.png"><br/>Pok&eacute;dex
                 </div></a>

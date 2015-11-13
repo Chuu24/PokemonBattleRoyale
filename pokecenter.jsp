@@ -24,7 +24,7 @@
                 	<p>
                 	<img src="img/explore.png"><br/>Explore
                 </div></a>
-                <a href="./pokecenter"><div class="col-md-1 center">
+                <a href="./pokecenter"><div class="col-md-1 center selected3">
                 	&nbsp;<p>
                     <img src="img/medical.png"><br/>Pok&eacute;Center
                 </div></a>

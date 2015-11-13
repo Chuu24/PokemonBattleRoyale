@@ -77,31 +77,31 @@
                                         <table class="table-responsive">
                                 	<tr>
                                     	<td class="padmemore">Name: </td>
-                                        <td class="padmemore"><input name="name" type="text" class="noborder"></td>
+                                        <td class="padmemore"><input name="name" type="text" class="noborder" maxlength="30"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">Username: </td>
-                                        <td class="padmemore"><input name="user" type="text" class="noborder"></td>
+                                        <td class="padmemore"><input name="user" type="text" class="noborder" maxlength="20"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">Birthday: </td>
-                                        <td class="padmemore"><input name="bday" type="text" class="noborder"></td>
+                                        <td class="padmemore"><input name="bday" type="text" class="noborder" maxlength="10"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">Country: </td>
-                                        <td class="padmemore"><input name="country" type="text" class="noborder"></td>
+                                        <td class="padmemore"><input name="country" type="text" class="noborder" maxlength="20"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">Password: </td>
-                                        <td class="padmemore"><input name="pass" type="password" class="noborder"></td>
+                                        <td class="padmemore"><input name="pass" type="password" class="noborder" maxlength="20"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">Password repeat: </td>
-                                        <td class="padmemore"><input name="passConfirm" type="password" class="noborder"></td>
+                                        <td class="padmemore"><input name="passConfirm" type="password" class="noborder" maxlength="20"></td>
                                     </tr>
                                     <tr>
                                     	<td class="padmemore">e-mail:</td>
-                                        <td class="padmemore"><input name="mail" type="text" class="noborder"></td>
+                                        <td class="padmemore"><input name="mail" type="text" class="noborder" maxlength="30"></td>
                                     </tr>
                                 </table>
                                         </td>
