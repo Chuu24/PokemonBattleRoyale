@@ -1,10 +1,11 @@
 import java.util.*;
-import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 
 public class DesInfo extends HttpServlet{
+    
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
 	try{
 
@@ -17,6 +18,7 @@ public class DesInfo extends HttpServlet{
 	}
     }
 
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 	try{
 	    String pokemon = request.getParameter("nombrePokemonSel");        
@@ -32,6 +34,9 @@ public class DesInfo extends HttpServlet{
 	    List<String> datosHabilidades = new ArrayList<String>();
 	    List<String> datosAtaques = new ArrayList<String>();    
 	    List<String> datosTipos = new ArrayList<String>();
+	    List<String> datosFortalezas = new ArrayList<String>();
+	    List<String> datosDebilidades = new ArrayList<String>();
+
 	    String datosDescr  = "";
 	    int hp = 0;
 	    int ataque = 0;
@@ -48,8 +53,13 @@ public class DesInfo extends HttpServlet{
 	    String alturaEn = "";
 	    String pokemonEvolucion = "";
 	    String pokemonEvolucionEvol = "";
+	    String segundaEvolucion = "";
+	    String primeraEvolucion = "";
+	    String actual = "";
             String nombrePokemon = "";
             String idPokemon = "";
+	    String primeraEvolucionID = "";
+	    String segundaEvolucionID = "";
 
 	    Statement stat = con.createStatement();
 	    String comando = "SELECT habilidades.nombre FROM pokemones,pokemon_habilidad,habilidades WHERE pokemons.pokemones.nombre = '"+pokemon+"' AND pokemones.idpokemon = pokemon_habilidad.idpokemon AND pokemons.pokemon_habilidad.idhabilidad = pokemons.habilidades.idhabilidad;";
@@ -81,10 +91,11 @@ public class DesInfo extends HttpServlet{
 		 datosDescr = rs3.getString("descripcion");
 	    }
 	    Statement stat4 = con.createStatement();
-	    String comando5 = "SELECT sprite from pokemones WHERE pokemones.nombre  = '"+pokemon+"';";
+	    String comando5 = "SELECT sprite, nombre from pokemones WHERE pokemones.nombre  = '"+pokemon+"';";
 	    ResultSet rs4 = stat4.executeQuery(comando5);
 	    while(rs4.next()){
 		sprite = rs4.getString("sprite");
+		actual = rs4.getString("nombre");
 	    }
 	    System.out.println("sprite: "+sprite);
 	    Statement stat5 = con.createStatement();
@@ -116,22 +127,51 @@ public class DesInfo extends HttpServlet{
 	    
 	    //Primera Evolucion 
 	    Statement stat7 = con.createStatement();
-	    String comando8 = "SELECT pokemones.sprite FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemones,pokemon_evolucion WHERE pokemones.nombre = '"+pokemon+"' AND pokemones.idpokemon = pokemon_evolucion.idpokemonpre)AS PokemonEv WHERE pokemones.idpokemon = PokemonEv.idevolucion;";
+	    String comando8 = "SELECT pokemones.sprite, pokemones.nombre,pokemones.idpokemon  FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemones,pokemon_evolucion WHERE pokemones.nombre = '"+pokemon+"' AND pokemones.idpokemon = pokemon_evolucion.idpokemonpre)AS PokemonEv WHERE pokemones.idpokemon = PokemonEv.idevolucion;";
 	    ResultSet rs7 = stat7.executeQuery(comando8);
 	    while(rs7.next()){
 		pokemonEvolucion = rs7.getString("pokemones.sprite");
+		primeraEvolucion = rs7.getString("pokemones.nombre");
+		primeraEvolucionID = rs7.getString("pokemones.idpokemon");
 	    }
 	    //Segunda Evolucion
 	    Statement stat8 = con.createStatement();
-	    String comando9 = "SELECT pokemones.sprite FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemon_evolucion,(SELECT pokemones.nombre,pokemones.sprite,PokemonEv.idevolucion FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemones,pokemon_evolucion WHERE pokemones.nombre = '"+pokemon+"' AND pokemones.idpokemon = pokemon_evolucion.idpokemonpre)AS PokemonEv WHERE pokemones.idpokemon = PokemonEv.idevolucion)AS PokemonPrimeraEV WHERE PokemonPrimeraEv.idevolucion = pokemon_evolucion.idpokemonpre)AS YAMERO WHERE pokemones.idpokemon = YAMERO.idevolucion;";
+	    String comando9 = "SELECT pokemones.sprite, pokemones.nombre, pokemones.idpokemon FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemon_evolucion,(SELECT pokemones.nombre,pokemones.sprite,PokemonEv.idevolucion FROM pokemones,(SELECT pokemon_evolucion.idevolucion FROM pokemones,pokemon_evolucion WHERE pokemones.nombre = '"+pokemon+"' AND pokemones.idpokemon = pokemon_evolucion.idpokemonpre)AS PokemonEv WHERE pokemones.idpokemon = PokemonEv.idevolucion)AS PokemonPrimeraEV WHERE PokemonPrimeraEv.idevolucion = pokemon_evolucion.idpokemonpre)AS YAMERO WHERE pokemones.idpokemon = YAMERO.idevolucion;";
 	    ResultSet rs8 = stat8.executeQuery(comando9);
 	    while(rs8.next()){
 		pokemonEvolucionEvol = rs8.getString("pokemones.sprite");
+		segundaEvolucion  = rs8.getString("pokemones.nombre");
+		segundaEvolucionID = rs8.getString("pokemones.idpokemon");
 	    }
+	    //Fortalezas 
+	    Statement stat9 = con.createStatement();
+	    String comando10 = "SELECT tipos.path from tipos , (SELECT efectividad_tipo.idTipoSecundario FROM pokemons.efectividad_tipo,(Select tipos.nombre, tipos.idtipo FROM pokemons.pokemones,pokemons.pokemon_tipo,pokemons.tipos WHERE pokemones.idpokemon = pokemon_tipo.idpokemon AND pokemon_tipo.idpokemon = tipos.idtipo AND pokemones.nombre = '"+pokemon+"') AS tipoPoke WHERE tipoPoke.idtipo = efectividad_tipo.idTipoPrincipal AND efectividad_tipo.debil = 1) AS PokeDebiles WHERE PokeDebiles.idTipoSecundario = tipos.idtipo;";
+	    ResultSet rs9 = stat9.executeQuery(comando10);
+	    while(rs9.next()){
+		String fortalezas = rs9.getString("tipos.path");
+		datosFortalezas.add(fortalezas);
+	    }
+	    //Debilidades
+	    Statement stat10 = con.createStatement();
+	    String comando11 = "SELECT tipos.path from tipos , (SELECT efectividad_tipo.idTipoSecundario FROM pokemons.efectividad_tipo,(Select tipos.nombre, tipos.idtipo FROM pokemons.pokemones,pokemons.pokemon_tipo,pokemons.tipos WHERE pokemones.idpokemon = pokemon_tipo.idpokemon AND pokemon_tipo.idpokemon = tipos.idtipo AND pokemones.nombre = '"+pokemon+"') AS tipoPoke WHERE tipoPoke.idtipo = efectividad_tipo.idTipoPrincipal AND efectividad_tipo.debil = 0) AS PokeDebiles WHERE PokeDebiles.idTipoSecundario = tipos.idtipo;";
+	    ResultSet rs10 = stat10.executeQuery(comando11);
+	    while(rs10.next()){
+		String debilidades = rs10.getString("tipos.path");
+		datosDebilidades.add(debilidades);
+	    }
+	    
 	    System.out.println("Segunda Evolucion: "+pokemonEvolucionEvol);
+	    System.out.println("Primera Evolucion: "+pokemonEvolucion);
 	    busqueda1 = "true";
 	    stat.close();
 	    con.close();
+	    request.setAttribute("datosDebilidades",datosDebilidades);
+	    request.setAttribute("datosFortalezas",datosFortalezas);
+	    request.setAttribute("segundaEvolucionID",segundaEvolucionID);
+	    request.setAttribute("primeraEvolucionID",primeraEvolucionID);
+	    request.setAttribute("actual",actual);
+	    request.setAttribute("nombreSegundaEvol",segundaEvolucion);
+	    request.setAttribute("nombrePrimeraEvol",primeraEvolucion);
 	    request.setAttribute("busqueda1",busqueda1);
 	    request.setAttribute("primerEvol",pokemonEvolucion);
 	    request.setAttribute("segundaEvol",pokemonEvolucionEvol);

@@ -1,10 +1,10 @@
 import java.util.*;
-import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import java.sql.*;
 
 public class AdInfo extends HttpServlet{
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response){
 	try{
 
@@ -16,6 +16,8 @@ public class AdInfo extends HttpServlet{
 	    e.printStackTrace();
 	}
     }
+    
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response){
 	try{
 	    String pokemon = request.getParameter("nombrePokemon");

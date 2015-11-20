@@ -53,6 +53,24 @@ h1, h2, h3, h4{
 	height:620px;
 }
 
+.team-thumbnail{
+    display: inline-block;
+    width: 25px;
+}
+
+.attacks{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.attacks td{
+    width: 150px;
+}
+
+.attacks input{
+    width: 100%;
+}
+
 #logo{
 	width:280px;
 	height:115px;
@@ -128,6 +146,21 @@ h1, h2, h3, h4{
 
 .padmemore{
 	padding:15px;
+}
+
+.currentPoke{
+    text-align: center;
+}
+
+.log{
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#battle-log{
+    width: 100%;
+    min-height: 200px;
 }
 
 #register{

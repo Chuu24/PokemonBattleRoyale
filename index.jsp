@@ -1,5 +1,9 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page language="java" import="java.util.*" %>
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="javax.servlet.http.*,javax.servlet.*" %>
+<%@ page language="java" import="java.util.*" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql"%>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -15,11 +19,12 @@
 	<script src="js/ExtraerPoke.js"></script>
         <script src="js/bootstrap.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
+	<script src="js/index.js"></script>
     </head>
     <body>
             <div class="row" id="header">
             	<div class="col-md-1"></div>
-                <a href="index.jsp"><div class="col-md-2 pokedex selected1">
+                <a href="index.jsp"><div class="col-md-2 pokedex">
                 	&nbsp;<p>
                     <img src="img/dex.png"><br/>Pok&eacute;dex
                 </div></a>
@@ -61,7 +66,7 @@
                 </div>
                 <div class="col-md-1"></div></a>
             </div>
-<!----- AQU� SE ACABA EL HEADER. REPITO. AQU� SE ACABA EL HEADER. EL CONTENIDO EMPIEZA AQU�. ----->
+<!----- AQU? SE ACABA EL HEADER. REPITO. AQU? SE ACABA EL HEADER. EL CONTENIDO EMPIEZA AQU?. ----->
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
@@ -71,8 +76,8 @@
                         <input type="text" class="search-bar" name="nombrePokemon"  maxlength="25" placeholder="Search" />
 			<input type="submit" value="Submit"/>
 		      </form>
-		      <form action="./DesInfo" method="POST">
-                        <input type="text" class="search-bar" name="nombrePokemonSel"  maxlength="25" placeholder="Search" />
+		      <form action="./DesInfo" method="POST" id="myform" style="visibility:hidden;">
+                        <input type="text" class="search-bar" name="nombrePokemonSel" id="nombrePokemonSel"  maxlength="25" placeholder="Search" />
                         <input type="submit" value="Submit"/>
                       </form>
                         <br />
@@ -91,201 +96,36 @@
 						</table> 
                        </c:when>
                        <c:otherwise>
-                        <table class="table-responsive table-striped pokedexTable">
-                            <tbody>
-                                <tr>
-                                    <td>#001 - Bulbasaur</td>
-                                </tr>
-                                <tr>
-                                    <td>#002 - Ivysaur</td>
-                                </tr>
-                                <tr>
-                                    <td>#003 - Venusaur</td>
-                                </tr>
-                                <tr>
-                                    <td>#004 - Charmander</td>
-                                </tr>
-                                <tr>
-                                    <td>#005 - Charmeleon</td>
-                                </tr>
-                                <tr>
-                                    <td>#006 - Charizard</td>
-                                </tr>
-                                <tr>
-                                    <td>#007 - Squirtle</td>
-                                </tr>
-                                <tr>
-                                    <td>#008 - Wartortle</td>
-                                </tr>
-                                <tr>
-                                    <td>#009 - Blastoise</td>
-                                </tr>
-                                <tr>
-                                    <td>#010 - Caterpie</td>
-                                </tr>
-                                <tr>
-                                    <td>#011 - Metapod</td>
-                                </tr>
-                                <tr>
-                                    <td>#012 - Butterfree</td>
-                                </tr>
-                                <tr>
-                                    <td>#013 - Weedle</td>
-                                </tr>
-                                <tr>
-                                    <td>#014 - Kakuna</td>
-                                </tr>
-                                <tr>
-                                    <td>#015 - Beedrill</td>
-                                </tr>
-                                <tr>
-                                    <td>#016 - Pidgey</td>
-                                </tr>
-                                <tr>
-                                    <td>#017 - Pidgeotto</td>
-                                </tr>
-                                <tr>
-                                    <td>#018 - Pidgeot</td>
-                                </tr>
-                                <tr>
-                                    <td>#019 - Rattata</td>
-                                </tr>
-                                <tr>
-                                    <td>#020 - Raticate</td>
-                                </tr>
-                                <tr>
-                                    <td>#021 - Spearow</td>
-                                </tr>
-                                <tr>
-                                    <td>#022 - Fearow</td>
-                                </tr>
- <tr>
-                                    <td>#009 - Blastoise</td>
-                                </tr>
-                                <tr>
-                                    <td>#010 - Caterpie</td>
-                                </tr>
-                                <tr>
-                                    <td>#011 - Metapod</td>
-                                </tr>
-                                <tr>
-                                    <td>#012 - Butterfree</td>
-                                </tr>
-                                <tr>
-                                    <td>#013 - Weedle</td>
-                                </tr>
-                                <tr>
-                                    <td>#014 - Kakuna</td>
-                                </tr>
-                                <tr>
-                                    <td>#015 - Beedrill</td>
-                                </tr>
-                                <tr>
-                                    <td>#016 - Pidgey</td>
-                                </tr>
-                                <tr>
-                                    <td>#017 - Pidgeotto</td>
-                                </tr>
-                                <tr>
-                                    <td>#018 - Pidgeot</td>
-                                </tr>
-                                <tr>
-                                    <td>#019 - Rattata</td>
-                                </tr>
-                                <tr>
-                                    <td>#020 - Raticate</td>
-                                </tr>
-                                <tr>
-                                    <td>#021 - Spearow</td>
-                                </tr>
-                                <tr>
-                                    <td>#022 - Fearow</td>
-                                </tr>
- <tr>
-                                    <td>#009 - Blastoise</td>
-                                </tr>
-                                <tr>
-                                    <td>#010 - Caterpie</td>
-                                </tr>
-                                <tr>
-                                    <td>#011 - Metapod</td>
-                                </tr>
-                                <tr>
-                                    <td>#012 - Butterfree</td>
-                                </tr>
-                                <tr>
-                                    <td>#013 - Weedle</td>
-                                </tr>
-                                <tr>
-                                    <td>#014 - Kakuna</td>
-                                </tr>
-                                <tr>
-                                    <td>#015 - Beedrill</td>
-                                </tr>
-                                <tr>
-                                    <td>#016 - Pidgey</td>
-                                </tr>
-                                <tr>
-                                    <td>#017 - Pidgeotto</td>
-                                </tr>
-                                <tr>
-                                    <td>#018 - Pidgeot</td>
-                                </tr>
-                                <tr>
-                                    <td>#019 - Rattata</td>
-                                </tr>
-                                <tr>
-                                    <td>#020 - Raticate</td>
-                                </tr>
-                                <tr>
-                                    <td>#021 - Spearow</td>
-                                </tr>
-                                <tr>
-                                    <td>#022 - Fearow</td>
-                                </tr>
- <tr>
-                                    <td>#009 - Blastoise</td>
-                                </tr>
-                                <tr>
-                                    <td>#010 - Caterpie</td>
-                                </tr>
-                                <tr>
-                                    <td>#011 - Metapod</td>
-                                </tr>
-                                <tr>
-                                    <td>#012 - Butterfree</td>
-                                </tr>
-                                <tr>
-                                    <td>#013 - Weedle</td>
-                                </tr>
-                                <tr>
-                                    <td>#014 - Kakuna</td>
-                                </tr>
-                                <tr>
-                                    <td>#015 - Beedrill</td>
-                                </tr>
-                                <tr>
-                                    <td>#016 - Pidgey</td>
-                                </tr>
-                                <tr>
-                                    <td>#017 - Pidgeotto</td>
-                                </tr>
-                                <tr>
-                                    <td>#018 - Pidgeot</td>
-                                </tr>
-                                <tr>
-                                    <td>#019 - Rattata</td>
-                                </tr>
-                                <tr>
-                                    <td>#020 - Raticate</td>
-                                </tr>
-                                <tr>
-                                    <td>#021 - Spearow</td>
-                                </tr>
-                                <tr>
-                                    <td>#022 - Fearow</td>
-                                </tr>
-                            </tbody>
+                        <table class="table-responsive table-striped pokedexTable" onclick="myFun(event)">
+                          <tbody>
+                          	<%
+                          	Connection con = null;
+                          	try{
+                          	Class.forName("com.mysql.jdbc.Driver");
+           					String url = "jdbc:mysql://localhost/pokemons";
+            				con = DriverManager.getConnection(url,"root","ldmpt24*");
+							}catch(ClassNotFoundException e){
+								e.printStackTrace();	
+							}
+							try{
+							Statement Estamento = con.createStatement();
+							ResultSet rs = Estamento.executeQuery("select nombre from pokemons.pokemones");
+                          	%>           
+                          	<%
+                          		while(rs.next()){
+                          		%>
+                          		<tr>
+                          		<td><%=rs.getString("nombre")%></td>	
+                          		</tr>
+								<%
+                          		}
+                          		%>
+                          		<%
+                       			}catch (Exception e){
+                       				e.printStackTrace();
+                       			}
+                       		%>                        		
+                          </tbody>
                         </table>
                        </c:otherwise>
                        </c:choose>                   
@@ -338,11 +178,33 @@
 				  					  <p>
                                     <br/>
                                     <h4>Strengths</h4>
-                                    <img src="img/type/grass.png"> <img src="img/type/ice.png"> <img src="img/type/bug.png"> <img src="img/type/steel.png">
+                                    <c:choose>
+                                    <c:when test='${requestScope.busqueda1 eq "true"}'>
+                                    	<%Iterator itr;%>
+                                    	<%List datos = (List)request.getAttribute("datosFortalezas");
+                                    		for(itr = datos.iterator(); itr.hasNext();){%>
+                                    			<img src="<%=itr.next()%>">
+                                    		<%}%>
+                                    </c:when>
+                                    <c:otherwise>
+                                    	<img src="img/type/grass.png"> <img src="img/type/ice.png"> <img src="img/type/bug.png"> <img src="img/type/steel.png">
+                                    </c:otherwise>
+                                    </c:choose>
                                     <p>
                                     <br/>
                                     <h4>Weaknesses</h4>
-                                    <img src="img/type/ground.png"> <img src="img/type/rock.png"> <img src="img/type/water.png">
+                                    <c:choose>
+                                    <c:when test='${requestScope.busqueda1 eq "true"}'>
+                                    	<%Iterator itr;%>
+                                    	<%List datos = (List)request.getAttribute("datosDebilidades");
+                                    		for(itr = datos.iterator(); itr.hasNext();){%>
+                                    			<img src="<%=itr.next()%>">
+                                    		<%}%>
+                                    </c:when>
+                                    <c:otherwise>
+                                    	<img src="img/type/ground.png"> <img src="img/type/rock.png"> <img src="img/type/water.png">
+                                    </c:otherwise>
+                                    </c:choose>
                             		<p>
                                     <br/>
                                     <h4>Abilities</h4>
@@ -350,16 +212,16 @@
                                     <c:choose>
                                     <c:when test='${requestScope.busqueda1  eq "true"}'>
                                      <table class="table-responsive table-striped" width="100%">
-                            				<tbody>
-                                			<%Iterator itr;%>
-							 				<%List datos = (List)request.getAttribute("datosHabilidades");
-												for(itr = datos.iterator(); itr.hasNext();){%>
-											<tr>
-							 					 <td ><%=itr.next()%></td>
-											</tr>
-												<%}%>
-                            				</tbody>
-                        				</table>
+                                        <tbody>
+                                            <%Iterator itr;%>
+                                                <%List datos = (List)request.getAttribute("datosHabilidades");
+                                                        for(itr = datos.iterator(); itr.hasNext();){%>
+                                                <tr>
+                                                         <td ><%=itr.next()%></td>
+                                                </tr>
+                                            <%}%>
+                                        </tbody>
+                                    </table>
                                     </c:when>
                                     <c:otherwise>
                                     	<table class="table-responsive table-striped" width="100%">
@@ -414,7 +276,7 @@
                                         	<td class="bigtd"><%= request.getAttribute("altura")%></td>
                                     	</c:when>
                                     	<c:otherwise>
-                                    		<td class="bigtd">3'07"</td>
+                                    		<td class="bigtd">3'07'' </td>
                                         	<td class="bigtd">1.1 m</td>
                                     	</c:otherwise>
                                     	</c:choose>				
@@ -693,21 +555,10 @@
                             <br/>
 							<h4>Evolution Chain</h4>
                             	<div id="evol">
-                                <!-- <img src="img/pkm/004.png" class="evolimg"><img src="img/next.png"> 
-                                <img src="img/pkm/005.png" class="evolimg"> <img src="img/next.png"> 
-                                <img src="img/pkm/006.png" class="evolimg">
-                                <br>
-								<table width="700px" style="text-align:center;">
-                                <tr>
-                                	<td>#004 Charmander</td>
-                                    <td>#005 Charmeleon</td>
-                                    <td>#006 Charizard</td>
-                                </tr>
-                                </table>-->
                                 <table class="table-responsive" align="center">
                                 	<tr>
                                     	<c:choose>
-                                    	<c:when test='${request.getAttribute("sprite") != null}'>
+                                    	<c:when test='${requestScope.sprite ne null}'>
                                     		<td width="150px"><img src="<%=request.getAttribute("sprite")%>"  class="evolimg"></td>	
                                     	</c:when>
                                     	<c:otherwise>
@@ -716,7 +567,7 @@
                                     	</c:choose>																		                                        
 										<td width="100px"><img src="img/next.png"></td>
 										<c:choose>
-										<c:when test='${request.getAttribute("primerEvol") != null}'>
+										<c:when test='${requestScope.primerEvol ne null}'>
 											<td width="150px"><img src="<%=request.getAttribute("primerEvol")%>"  class="evolimg"></td>		
 										</c:when>
 										<c:otherwise>
@@ -725,7 +576,7 @@
 										</c:choose>                      									
                                         <td width="100px"><img src="img/next.png"></td>
                                         <c:choose>
-                                        <c:when test='${request.getAttribute("segundaEvol") != null}'>
+                                        <c:when test='${requestScope.segundaEvol ne null}'>
                                         	<td width="150px"><img src="<%=request.getAttribute("segundaEvol")%>" class="evolimg"></td>
                                         </c:when>
                                         <c:otherwise>
@@ -735,11 +586,32 @@
                                         
                                     </tr>
                                     <tr>
-                                	<td width="150px">#004 Charmander</td>
+								    <c:choose>
+								    <c:when test='${requestScope.nombrePokemon ne null}'>
+				                    	<td width="150px">#<%=request.getAttribute("idPokemon")%>  <%=request.getAttribute("nombrePokemon")%></td>
+								    </c:when>
+								    <c:otherwise>
+								    	<td width="150px">#Primera Evolucion</td>
+								    </c:otherwise>
+								    </c:choose>
+				                    <td width="100px"></td>
+                                    <c:choose>
+                                    <c:when test='${requestScope.nombrePrimeraEvol ne null}'>
+                                    	<td width="150px">#<%=request.getAttribute("primeraEvolucionID")%> <%=request.getAttribute("nombrePrimeraEvol")%></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                    	<td width="150px">#Segunda Evolucion</td>
+                                    </c:otherwise>
+                                    </c:choose>
                                     <td width="100px"></td>
-                                    <td width="150px">#005 Charmeleon</td>
-                                    <td width="100px"></td>
-                                    <td width="150px">#006 Charizard</td>
+                                    <c:choose>
+                                    <c:when test='${requestScope.nombrePrimeraEvol ne null}'>
+                                    	<td width="150px">#<%=request.getAttribute("segundaEvolucionID")%> <%=request.getAttribute("nombreSegundaEvol")%></td>
+                                    </c:when>
+                                    <c:otherwise>
+                                    	<td width="150px">#Tercera Evolucion </td>
+                                    </c:otherwise>
+                                    </c:choose>
                                     </tr>
                                 </table>
                                 </div>
