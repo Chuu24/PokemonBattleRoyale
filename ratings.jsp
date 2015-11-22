@@ -12,6 +12,7 @@
         <link rel="shortcut icon" href="img/icon.png">
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/otroperfiljuas.js"></script>
     </head>
     <body>
             <div class="row" id="header">
@@ -25,7 +26,7 @@
                 	<p>
                 	<img src="img/explore.png"><br/>Explore
                 </div></a>
-                <a href="./pokecenter"><div class="col-md-1 center">
+                <a href="pokecenter.jsp"><div class="col-md-1 center">
                 	&nbsp;<p>
                     <img src="img/medical.png"><br/>Pok&eacute;Center
                 </div></a>
@@ -38,7 +39,7 @@
                     <img src="img/global.png"><br/>
                     GTS
                 </div></a>
-                <a href="./ratings"><div class="col-md-1 rate selected6">
+                <a href="./ratings"><div class="col-md-1 rate">
                     &nbsp;<p>
                     <img src="img/rate.png"><br/>
                     Ratings
@@ -78,12 +79,16 @@
                                 <c:forEach items="${requestScope.rankeados}" var="p">
                                     <tr>
                                         <td><c:out value="${p.posicion}" /></td>
-                                        <td><c:out value="${p.nombre}" /></td>
+                                        <td><a href="javascript:showProfile('${p.iD}');"><c:out value="${p.nombre}" /></A> </td>
                                         <td><c:out value="${p.pkmnsCatched}" /></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
                                 </table>
+                                <form action="./OtroPerfil" method="POST" id="myForm" style="visibility:hidden"  >
+                                        <input type="text" name="user" maxlength="20" size="10" id="pony" />
+                                            <input type="submit" value="Ir" /></td>
+                                </form>
                             </div>
                             
                         </div>

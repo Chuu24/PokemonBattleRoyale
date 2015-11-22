@@ -64,9 +64,9 @@
 
         Chat.initialize = function() {
             if (window.location.protocol == 'http:') {
-                Chat.connect('ws://' + window.location.host + '/PokemonBattleRoyale/chat');
+                Chat.connect('ws://' + window.location.host + '/PokemonBattleRoyale2/chat');
             } else {
-                Chat.connect('wss://' + window.location.host + '/PokemonBattleRoyale/chat');
+                Chat.connect('wss://' + window.location.host + '/PokemonBattleRoyale2/chat');
             }
         };
 

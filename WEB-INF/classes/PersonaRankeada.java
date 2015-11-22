@@ -1,5 +1,14 @@
 public class PersonaRankeada {
     protected int posicion;
+    protected int iD;
+
+    public int getiD() {
+        return iD;
+    }
+
+    public void setiD(int iD) {
+        this.iD = iD;
+    }
     protected String nombre;
     protected int pkmnsCatched;
 
@@ -27,8 +36,9 @@ public class PersonaRankeada {
         return pkmnsCatched;
     }
 
-    public PersonaRankeada(int posicion, String nombre, int pkmnsCatched) {
+    public PersonaRankeada(int posicion, int iD, String nombre, int pkmnsCatched) {
         this.posicion = posicion;
+        this.iD=iD;
         this.nombre = nombre;
         this.pkmnsCatched = pkmnsCatched;
     }

@@ -11,20 +11,30 @@
         <title>Pokemon BR</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="shortcut icon" href="img/icon.png">
+        
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/jquery.scrollbar.css" rel="stylesheet">
         <link href="css/templateGeneral.css" rel="stylesheet">
-        <link rel="shortcut icon" href="img/icon.png">
+        <link href="css/image-picker.css" rel="stylesheet">
+        <link href="css/dropit.css" rel="stylesheet">
+                
         <script src="js/jquery-1.11.3.min.js"></script>
-	<script src="js/ExtraerPoke.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/likeitshot.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
-	<script src="js/index.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+        <script src="js/masonry.js"></script>
+        <script src="js/image-picker.js"></script>
+        <script src="js/register.js"></script>
+        
     </head>
     <body>
             <div class="row" id="header">
             	<div class="col-md-1"></div>
-                <a href="index.jsp"><div class="col-md-2 pokedex">
+                <a href="index.jsp"><div class="col-md-2 pokedex selected1">
                 	&nbsp;<p>
                     <img src="img/dex.png"><br/>Pok&eacute;dex
                 </div></a>
@@ -60,11 +70,23 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <a href="./profile"><div class="col-md-1 profile">
+                <div class="col-md-1 profile">
                 	&nbsp;<p>
-                    <img src="img/profile.png"><br/>Profile
+                    <img src="img/profile.png"><br/>
+                    <ul class="menu list-unstyled">
+                        <li style="margin-top:-8px; margin-bottom:8px;">
+                            <a href="./profile">Profile</a>
+                            <ul>
+                                <li class="drop"><a href="#">Messages</a></li>
+                                <li class="drop"><a href="./friends">Friend list</a></li>
+                                <li class="drop"><a href="#">Find user</a></li>
+                                <li class="drop"><a href="#">Settings</a></li>
+                                <li class="drop"><a href="#">Help</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
-                <div class="col-md-1"></div></a>
+                <div class="col-md-1"></div>
             </div>
 <!----- AQU? SE ACABA EL HEADER. REPITO. AQU? SE ACABA EL HEADER. EL CONTENIDO EMPIEZA AQU?. ----->
             <div class="row">
@@ -442,7 +464,7 @@
 	                                        <%int defensaIMG = (defensaEs*10)/120;%>
 	                                        <%int defensaNon = 10-defensaIMG;%>
 	                                        <%for(int i=0;i<defensaIMG;i++){%>
-	                                        	<img src="img/stat/hp.png">
+	                                        	<img src="img/stat/spdefense.png">
 	                                        <%}%>
 	                                        <%for(int j = 0;j<defensaNon;j++){%>
 	                                        	<img src="img/stat/none.png">

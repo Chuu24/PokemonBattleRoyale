@@ -142,6 +142,7 @@
         <servlet-name>SetTeam</servlet-name>
         <servlet-class>SetTeam</servlet-class>
     </servlet>
+    
     <servlet-mapping>
         <servlet-name>SetTeam</servlet-name>
         <url-pattern>/setTeam</url-pattern>
@@ -165,6 +166,16 @@
     <servlet-mapping>
         <servlet-name>Pokecenter</servlet-name>
         <url-pattern>/pokecenter</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Battle</servlet-name>
+        <servlet-class>SetBattle</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Battle</servlet-name>
+        <url-pattern>/battle</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -208,5 +219,25 @@
     	<url-pattern>
     		/DesInfo
     	</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>FriendRoster</servlet-name>
+        <servlet-class>FriendRoster</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>FriendRoster</servlet-name>
+        <url-pattern>/friends</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OtroPerfil</servlet-name>
+        <servlet-class>OtroPerfil</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OtroPerfil</servlet-name>
+        <url-pattern>/OtroPerfil</url-pattern>
     </servlet-mapping>
 </web-app>

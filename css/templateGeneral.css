@@ -50,7 +50,7 @@ h1, h2, h3, h4{
 .containmemore{
 	position:relative;
 	width:100%;
-	height:620px;
+	height:1050px;
 }
 
 .team-thumbnail{
@@ -64,7 +64,7 @@ h1, h2, h3, h4{
 }
 
 .attacks td{
-    width: 150px;
+    width: 25%;
 }
 
 .attacks input{
@@ -95,13 +95,14 @@ h1, h2, h3, h4{
 .btn2{
 	border:none;
 	background-color:#63F;
-	width:90px;
-	height:30px;
+	width:100px;
+	height:40px;
 	color:#fff;
 	-webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 	font-family:'Xolo';
+	font-size:15px;
 }
 
 .btn2:hover{
@@ -148,6 +149,30 @@ h1, h2, h3, h4{
 	padding:15px;
 }
 
+#ftable{
+	text-align:center;
+	width:100%;
+	height:20px;
+}
+
+#friend{
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:20px;
+	padding-bottom:20px;
+	background-color:#F1F3F5;
+	width:40%;
+	height:auto;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+	font-family:"Segoe UI";
+}
+
 .currentPoke{
     text-align: center;
 }
@@ -167,7 +192,7 @@ h1, h2, h3, h4{
 	padding-left:20px;
 	padding-bottom:20px;
 	background-color:#F1F3F5;
-	width:670px;
+	width:650px;
 	height:auto;
 	-webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -384,6 +409,38 @@ table.test {
 .rounded{
         background-color: rgb(97,209,255);
         border-radius: 10px 10px 10px 10px;
+}
+.tfield{
+        border-radius: 5px 5px 5px 5px;
+		width:175px;
+		height:25px;
+		padding-left:5px;
+}
+
+#starters{
+	width:100%;
+	padding-left:22px;
+}
+.thumbnails li img{
+	margin: 5px;
+}
+.menu ul.dropit-submenu {
+    background-color: #0CF;
+    /*color: #000;
+	background-color: #fff;
+    border: 1px solid #b2b2b2;
+	    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+       -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+            box-shadow: 0px 1px 3px rgba(0,0,0,0.15);*/
+}
+.drop{
+	height:40px;
+}
+.drop:hover{
+	background-color:#3ED2FD;
 }
 .imagenCentro{
     position:  relative;

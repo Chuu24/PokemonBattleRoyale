@@ -13,6 +13,7 @@
         <link rel="shortcut icon" href="img/icon.png">
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/battle.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
     </head>
     <body>
@@ -71,29 +72,29 @@
                             <br/>
                                 <div class="row">
                                     <div class="col-lg-3 currentPoke">
-                                        <img src="img/Bulbasaur.png" class="img-responsive"/><br />
-                                        Bob - Level: 12
+                                        <img src="${requestScope.mainImg}" class="img-responsive"/><br />
+                                        ${requestScope.mainNam} - Level: ${requestScope.mainLvl}<br />
+                                        Health: <div id="myHealth"> ${requestScope.mainHth} </div>
                                     </div>
                                     <div class="col-lg-6 log">
                                         <textarea id="battle-log" >
-                                            A battle has started.
                                         </textarea>
                                     </div>
                                     <div class="col-lg-3 currentPoke">
-                                        <img src="img/Squirtle.png" class="img-responsive"/>
-                                        Jimmy - Level: 10
+                                        <img src="${requestScope.oponImg}" class="img-responsive"/><br />
+                                        ${requestScope.oponNam} - Level: ${requestScope.oponLvl}<br />
+                                        Health: <div id="hsiHealth"> ${requestScope.oponHth} </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     &nbsp;
                                 </div>
-                                <div class="row">
+                                <div class="row" id="attacks">
                                     <table class="table-responsive attacks">
                                         <tr>
-                                            <td><input type="submit" value="Growl" id="attack1"/></td>
-                                            <td><input type="submit" value="Tackle" id="attack2"/></td>
-                                            <td><input type="submit" value="Vine Whip" id="attack3"/></td>
-                                            <td><input type="submit" value="Poison Powder" id="attack4"/></td>
+                                            <c:forEach items="${requestScope.ataques}" var="p">
+                                                <td><input type="submit" value="${p.name}" onclick="setAttack(${p.id});" /></td>
+                                            </c:forEach>
                                         </tr>
                                     </table>
                                 </div>
@@ -103,21 +104,19 @@
                                 <div class="row">
                                     <div class="col-lg-6" style="text-align: center;">
                                         <h4><small>My team: </small></h1>
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Bulbasaur.png" alt="" />
+                                        <div id="myTeam">
+                                        <c:forEach items="${requestScope.mainTeam}" var="p">
+                                            <img class="img-responsive team-thumbnail" src="${p.imagen}" alt="" />
+                                        </c:forEach>
+                                        </div>
                                     </div>
                                     <div class="col-lg-6" style="text-align: center;">
+                                        <div id="hisTeam">
                                         <h4><small>Opponent team: </small></h1>
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
-                                        <img class="img-responsive team-thumbnail" src="img/Squirtle.png" alt="" />
+                                        <c:forEach items="${requestScope.oponTeam}" var="p">
+                                            <img class="img-responsive team-thumbnail" src="${p.imagen}" alt="" />
+                                        </c:forEach>
+                                        </div>
                                     </div>
                                 </div>
                     	</div><!-- Contain me --->

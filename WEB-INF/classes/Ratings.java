@@ -26,10 +26,11 @@ public class Ratings extends HttpServlet{
             int cont=0;
             while(rs.next()){
                 cont++;
+                int id = rs.getInt("identrenador");
                 String nombre = rs.getString("nombre");
                 int cantidad = rs.getInt("cantidad");
                 
-                rankeados.add(new PersonaRankeada(cont, nombre, cantidad));
+                rankeados.add(new PersonaRankeada(cont, id,  nombre, cantidad));
             }
             
             request.setAttribute("rankeados", rankeados);
