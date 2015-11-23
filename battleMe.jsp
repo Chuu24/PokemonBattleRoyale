@@ -84,6 +84,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
+                <c:if test='${sessionScope.user ne null}'>
                     <div class="row contenido">
                     	<div class="containme">
                         	<h2 style="text-align:left; margin-left:12%;">Friends</h2>
@@ -166,6 +167,12 @@
                             </div>
                     	</div><!-- Contain me --->
                     </div><!--Row Contenido --->
+                    </c:if>
+                    <c:if test='${sessionScope.user eq null}'>
+                        <script>
+                            window.location = 'login.jsp';
+                        </script>
+                    </c:if>
                 </div><!-- Col Md 10 --->
                 <div class="col-md-1"></div>
             </div><!-- Row --->

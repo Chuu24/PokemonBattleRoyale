@@ -84,6 +84,7 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
+                <c:if test='${sessionScope.user ne null}'>
                     <div class="row contenido">
                     	<div class="containme" style="height:500px; margin-bottom:30px;">
                             <h3>Global Trading Station</h3>
@@ -194,6 +195,12 @@
                             </div>                      
                     	</div><!-- Contain me --->
                     </div><!--Row Contenido --->
+                    </c:if>
+                    <c:if test='${sessionScope.user eq null}'>
+                        <script>
+                            window.location = 'login.jsp';
+                        </script>
+                    </c:if>
                 </div><!-- Col Md 10 --->
                 <div class="col-md-1"></div>
             </div><!-- Row --->

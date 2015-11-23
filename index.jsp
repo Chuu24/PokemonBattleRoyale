@@ -110,7 +110,7 @@
 						<%List datos = (List)request.getAttribute("datos");
 			      			 for(itr = datos.iterator(); itr.hasNext();){%>
 						<tr>
-						  <td ><%=itr.next()%></td>
+						  <td class="clickme" ><%=itr.next()%></td>
 					 </tr>
 						<%}%>
 						</table> 
@@ -135,7 +135,7 @@
                           		while(rs.next()){
                           		%>
                           		<tr>
-                          		<td><%=rs.getString("nombre")%></td>	
+                          		<td class="clickme"><%=rs.getString("nombre")%></td>	
                           		</tr>
 								<%
                           		}

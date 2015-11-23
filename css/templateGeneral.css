@@ -32,6 +32,10 @@ body
     overflow-x:hidden;
 }
 
+.clickme{
+    cursor: pointer;
+}
+
 a, a:visited, a:hover {
   text-decoration: none;
   color:inherit;
