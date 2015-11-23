@@ -170,12 +170,32 @@
     
     <servlet>
         <servlet-name>Battle</servlet-name>
-        <servlet-class>SetBattle</servlet-class>
+        <servlet-class>Battlers</servlet-class>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>Battle</servlet-name>
         <url-pattern>/battle</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SetBattle</servlet-name>
+        <servlet-class>SetBattle</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SetBattle</servlet-name>
+        <url-pattern>/setBattle</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SetBattles</servlet-name>
+        <servlet-class>SetBattles</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>SetBattles</servlet-name>
+        <url-pattern>/setBattles</url-pattern>
     </servlet-mapping>
     
     <servlet>
@@ -241,7 +261,7 @@
         <url-pattern>/OtroPerfil</url-pattern>
     </servlet-mapping>
 	
-	    <servlet>
+    <servlet>
         <servlet-name>Find</servlet-name>
         <servlet-class>BuscaUsuario</servlet-class>
     </servlet>
@@ -250,4 +270,23 @@
         <servlet-name>Find</servlet-name>
         <url-pattern>/find</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AddFriend</servlet-name>
+        <servlet-class>AddFriend</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddFriend</servlet-name>
+        <url-pattern>/AddFriend</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AceptaAmigo</servlet-name>
+        <servlet-class>AceptaAmigo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AceptaAmigo</servlet-name>
+        <url-pattern>/aceptaAmigo</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

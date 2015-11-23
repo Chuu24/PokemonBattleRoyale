@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 import javax.websocket.EndpointConfig;
 
@@ -144,14 +143,32 @@ public class Battle {
             String idActualizar = "";
             int incremento = 0;
             
-            if(oponTeam.isEmpty() || mainTeam.isEmpty()){
-                incremento = 1000;
-            }
-            
-            if(oponTeam.size() < 1){
+            if(oponTeam.isEmpty()){
                 idActualizar = idUsuario;
             }else{
                 idActualizar = idOponent;
+            }
+            
+            if(oponTeam.isEmpty() || mainTeam.isEmpty()){
+                incremento = 1000;
+                
+                Statement stat5 = con.createStatement();
+                ResultSet rs5 = stat5.executeQuery("SELECT principal, nivel, c.idpokemon FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND pe.identrenador = " + idActualizar + " AND c.identrenador = " + idActualizar + " AND c.idpokemon = p.idpokemon;");
+
+                while(rs5.next()){
+                    int idPoke = rs5.getInt("idpokemon");
+                    int nivel = rs5.getInt("nivel");
+                    int principal = rs5.getInt("principal");
+
+                    if(principal == 1){
+                        nivel++;
+                        Statement stat6 = con.createStatement();
+                        stat6.executeUpdate("UPDATE capturados SET nivel = " + nivel + " WHERE idpokemon = " + idPoke + " AND identrenador = " + idActualizar + ";");
+                        stat6.close();
+                    }
+                }
+                
+                stat5.close();
             }
             
             Statement stat3 = con.createStatement();

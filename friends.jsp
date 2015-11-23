@@ -103,12 +103,25 @@
                                         <th style="text-align:center;">Status</th>
                                     </tr>
                                 	<tr>
-                                    	<td width="10%"><img src="img/train/01.jpg"></td>
-                                        <td width="10%"><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.userName}" /></a></td>
-                                        <td width="40%"><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.nombre}" /></a></td>
-                                        <td width="10%">21</td>
-                                        <td width="10%">M</td>
-                                        <td width="20%"><c:out value="${f.status}" /></td>
+                                    	<td><img src="img/train/01.jpg"></td>
+                                        <td><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.userName}" /></a></td>
+                                        <td><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.nombre}" /></a></td>
+                                        <td>21</td>
+                                        <td>M</td>
+                                        <td>
+                                            <c:if test='${f.status eq "Accepted"}'>
+                                                    <c:out value="${f.status}" />
+                                            </c:if>
+                                            <c:if test='${f.status eq "Pending"}'>
+                                                    <c:out value="${f.status}" />
+                                            </c:if>
+                                            <c:if test='${f.status eq "Aceptar"}'>
+                                                    <form action="./aceptaAmigo" method="POST" id="myForm" >
+                                                        <input type="text" name="amigoAceptado" maxlength="20" size="3"value="${f.iD}" style="visibility:hidden"  />
+                                                        <input type="submit" value="Aceptar" /></td>
+                                                    </form>
+                                            </c:if>
+                                        </td>
                                     </tr>
                                     <tr>
                                     	<td style="text-align:left;" colspan="6">

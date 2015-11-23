@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `amigos`
+--
+
+DROP TABLE IF EXISTS `amigos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `amigos` (
+  `idinvitado` int(11) DEFAULT NULL,
+  `idinvitador` int(11) DEFAULT NULL,
+  `status` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `amigos`
+--
+
+LOCK TABLES `amigos` WRITE;
+/*!40000 ALTER TABLE `amigos` DISABLE KEYS */;
+INSERT INTO `amigos` VALUES (1,2,1),(1,3,1),(1,4,1),(2,3,1),(3,4,1),(7,1,1),(1,8,0);
+/*!40000 ALTER TABLE `amigos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ataques`
 --
 
@@ -61,6 +85,7 @@ CREATE TABLE `capturados` (
   `ataque2` int(11) NOT NULL,
   `ataque3` int(11) NOT NULL,
   `ataque4` int(11) NOT NULL,
+  `health` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idpokemon`,`identrenador`),
   KEY `idAtaques_idx` (`ataque1`),
   KEY `idHabilidadC_idx` (`habilidad`),
@@ -84,7 +109,7 @@ CREATE TABLE `capturados` (
 
 LOCK TABLES `capturados` WRITE;
 /*!40000 ALTER TABLE `capturados` DISABLE KEYS */;
-INSERT INTO `capturados` VALUES (1,1,'Bulbasaur',29,1,2,2,3,3),(1,3,'Bulba',35,2,5,6,2,3),(1,4,'MiMostrrrrooo',22,2,2,6,1,4),(2,1,'Plants',52,1,3,6,3,2),(3,1,'Weed',14,1,5,2,4,5),(3,3,'Venosaur',16,2,5,4,5,5),(9,1,'BigTurtle',17,1,1,1,1,1),(12,1,'NotVenomoth',88,1,1,1,1,1),(13,1,'Pinhead',53,1,1,1,1,1),(15,1,'GreenHornet',45,1,1,1,1,1);
+INSERT INTO `capturados` VALUES (1,1,'Bulbasaur',29,1,2,2,3,3,32),(1,3,'Bulba',35,2,5,6,2,3,37),(1,4,'MiMostrrrrooo',22,2,2,6,1,4,0),(2,1,'Plants',52,1,3,6,3,2,89),(2,3,'Poop',19,1,4,2,5,2,36),(2,4,'popis',21,2,4,1,2,2,16),(3,1,'Weed',14,1,5,2,4,5,22),(3,3,'Venosaur',16,2,5,4,5,5,25),(4,2,'El Komander',4,1,1,1,1,1,1),(4,7,'Poop',5,1,1,1,1,1,1),(5,2,'Fierro Pariente',76,1,1,1,1,1,44),(5,4,'yoloswaggins',15,1,1,1,1,1,8),(7,1,'Squirt',27,1,1,1,1,1,29),(7,6,'SquirtMe',5,1,1,1,1,1,2),(7,8,'Tortuguita',5,1,1,1,1,1,2),(8,1,'Warti',37,1,1,1,1,1,49),(9,1,'BigTurtle',17,1,1,1,1,1,32),(11,1,'Harden',61,1,1,1,1,1,66),(12,1,'NotVenomoth',88,1,1,1,1,1,111),(13,1,'Pinhead',53,1,1,1,1,1,48),(15,1,'GreenHornet',45,1,1,1,1,1,64);
 /*!40000 ALTER TABLE `capturados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,7 +190,7 @@ CREATE TABLE `inventario` (
 
 LOCK TABLES `inventario` WRITE;
 /*!40000 ALTER TABLE `inventario` DISABLE KEYS */;
-INSERT INTO `inventario` VALUES (1,1,6),(3,1,8),(4,1,0),(4,2,0),(4,3,4);
+INSERT INTO `inventario` VALUES (1,1,1),(2,1,1),(2,3,0),(3,1,6),(4,1,0),(4,2,0),(4,3,2);
 /*!40000 ALTER TABLE `inventario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,6 +222,33 @@ INSERT INTO `objetos` VALUES (1,'PokeBall','Use this to catch a Pokemon',100,1),
 UNLOCK TABLES;
 
 --
+-- Table structure for table `oponentes`
+--
+
+DROP TABLE IF EXISTS `oponentes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `oponentes` (
+  `idprincipal` int(11) NOT NULL,
+  `idoponente` int(11) NOT NULL,
+  PRIMARY KEY (`idprincipal`,`idoponente`),
+  KEY `idoponente_perfil_idx` (`idoponente`),
+  CONSTRAINT `idoponente_perfil` FOREIGN KEY (`idoponente`) REFERENCES `perfil` (`idperfil`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `idperfil_perfil` FOREIGN KEY (`idprincipal`) REFERENCES `perfil` (`idperfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oponentes`
+--
+
+LOCK TABLES `oponentes` WRITE;
+/*!40000 ALTER TABLE `oponentes` DISABLE KEYS */;
+INSERT INTO `oponentes` VALUES (3,1),(4,2),(1,3),(2,4),(6,5),(5,6),(7,7),(8,8);
+/*!40000 ALTER TABLE `oponentes` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `perfil`
 --
 
@@ -214,7 +266,7 @@ CREATE TABLE `perfil` (
   `cumple` varchar(45) NOT NULL,
   `pais` varchar(45) NOT NULL,
   PRIMARY KEY (`idperfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -223,7 +275,7 @@ CREATE TABLE `perfil` (
 
 LOCK TABLES `perfil` WRITE;
 /*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'chuu','pass','img/chuu.png','chuu24@gmail.com',300,'Jesus Herrera','July/8','Mexico'),(2,'sue','bob','img/sue.png','imsomeonelse@gmail.com',1000,'Susana Gonzalez','March/16','Canada'),(3,'chuu24','pass','img/chuu.png','chuu24@gmail.com',1000,'Chuu Herrera','July/8','Mexico'),(4,'asd','asd','img/chuu.png','asd@asd.com',0,'asd','asd','asd');
+INSERT INTO `perfil` VALUES (1,'chuu','pass','img/chuu.png','chuu24@gmail.com',16200,'Jesus Herrera','July/8','Mexico'),(2,'sue','bob','img/sue.png','imsomeonelse@gmail.com',300,'Susana Gonzalez','March/16','Canada'),(3,'chuu24','pass','img/chuu.png','chuu24@gmail.com',15000,'Chuu Herrera','July/8','Mexico'),(4,'asd','asd','img/chuu.png','asd@asd.com',0,'asd','asd','asd'),(5,'infiernanda','infier','img/train/f6.png','infier@mail.com',2000,'Fernanda Montiel','1988-09-15','MX'),(6,'cantucky','pass','img/train/f5.png','cantucky@canto.com',2000,'Daniel Canto','1994-07-12','MX'),(7,'quijadin','muai','img/train/f1.png','quisiera@propuesta.com',2000,'Roman Aguilar','1993-02-14','BN'),(8,'chimi','rana','img/train/m5.png','chimi@reptiles.com',2000,'Sebastian Chimal','1999-02-22','BB');
 /*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,8 +319,8 @@ CREATE TABLE `pokemon_equipo` (
   `principal` tinyint(4) NOT NULL,
   PRIMARY KEY (`idpokemon`,`identrenador`,`principal`),
   KEY `team_entrenador_idx` (`identrenador`),
-  CONSTRAINT `team_pokemon` FOREIGN KEY (`idpokemon`) REFERENCES `pokemones` (`idpokemon`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `team_entrenador` FOREIGN KEY (`identrenador`) REFERENCES `perfil` (`idperfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `team_entrenador` FOREIGN KEY (`identrenador`) REFERENCES `perfil` (`idperfil`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `team_pokemon` FOREIGN KEY (`idpokemon`) REFERENCES `pokemones` (`idpokemon`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -278,7 +330,7 @@ CREATE TABLE `pokemon_equipo` (
 
 LOCK TABLES `pokemon_equipo` WRITE;
 /*!40000 ALTER TABLE `pokemon_equipo` DISABLE KEYS */;
-INSERT INTO `pokemon_equipo` VALUES (1,1,0),(2,1,0),(2,1,1),(3,1,0),(3,1,1),(9,1,1),(12,1,1),(13,1,1),(15,1,1),(1,3,0),(1,3,1),(3,3,0),(3,3,1);
+INSERT INTO `pokemon_equipo` VALUES (1,1,0),(2,1,0),(2,1,1),(3,1,0),(3,1,1),(9,1,1),(12,1,1),(13,1,1),(15,1,1),(4,2,1),(5,2,1),(1,3,0),(1,3,1),(2,3,1),(3,3,0),(3,3,1),(1,4,1),(2,4,1),(5,4,1),(7,6,0),(7,6,1),(7,8,1);
 /*!40000 ALTER TABLE `pokemon_equipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,4 +493,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-10-27 14:27:16
+-- Dump completed on 2015-11-22 23:40:27

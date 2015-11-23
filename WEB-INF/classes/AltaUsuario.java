@@ -71,9 +71,6 @@ public class AltaUsuario extends HttpServlet{
                     s2.executeUpdate("INSERT INTO oponentes VALUES (\"" + idUsuario + "\",\"" + idUsuario + "\");");
                     s2.close();
                     
-                    Statement s3 = con.createStatement();
-                    s3.executeUpdate("INSERT INTO amigos VALUES (\"" + idUsuario + "\",\"" + idUsuario + "\", 1);");
-                    s3.close();
                     s.close();
 
                     Statement st2 = con.createStatement();

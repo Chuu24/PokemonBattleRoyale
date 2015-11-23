@@ -31,7 +31,7 @@ Chat.connect = (function(host) {
             $('#oponHealth').val(resp.hisHealth);
             $('#info-stuff').html("Pick one attack...");
             if(resp.myHealth < 1 || resp.hisHealth < 1){
-                window.location = "./battle";
+                window.location = "./setBattles";
             }
         }
         Console.log(resp.respuesta);

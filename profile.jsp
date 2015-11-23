@@ -13,7 +13,6 @@
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/jquery.scrollbar.css" rel="stylesheet">
         <link href="css/templateGeneral.css" rel="stylesheet">
-        <link href="css/image-picker.css" rel="stylesheet">
         <link href="css/dropit.css" rel="stylesheet">
                 
         <script src="js/jquery-1.11.3.min.js"></script>
@@ -65,16 +64,16 @@
                 	&nbsp;<p>
                     <img src="img/profile.png"><br/>
                     <ul class="menu list-unstyled">
-                        <li style="margin-top:-8px; margin-bottom:8px;">
-                            <a href="./profile">Profile</a>
-                            <ul>
-                                <li class="drop"><a href="#">Messages</a></li>
-                                <li class="drop"><a href="./friends">Friend list</a></li>
-                                <li class="drop"><a href="#">Settings</a></li>
-                                <li class="drop"><a href="#">Help</a></li>
-                            </ul>
-                        </li>
+                <li style="margin-top:-8px; margin-bottom:8px;">
+                    <a href="./profile">Profile</a>
+                    <ul>
+                        <li class="drop"><a href="#">Messages</a></li>
+                        <li class="drop"><a href="./friends">Friend list</a></li>
+                        <li class="drop"><a href="#">Settings</a></li>
+                        <li class="drop"><a href="#">Help</a></li>
                     </ul>
+                </li>
+</ul>
                 </div>
                 <div class="col-md-1"></div></a>
             </div>
@@ -92,17 +91,14 @@
                             <img src="img/train/01.jpg"  /> ${sessionScope.username} | <a href="./logout">Logout</a>
                         </c:if>
                     </div>
-                    <div class="row">
-                        
-                    </div>
                 	<div class="row contenido">
                     	<div class="containme">
                             <div id="register">
                             	<h3 style="font-family:'Xolo';">Profile</h3>
                                 <table class="table-responsive">
-                                    <tr>
+									<tr>
                                         <td>
-                                        <table class="table-responsive">
+                                                                        <table class="table-responsive">
                                 	<tr>
                                     	<td class="padmemore">Name: </td>
                                         <td><c:out value="${name}" /></td>
@@ -145,7 +141,17 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <c:if test='${requestScope.yamigos eq "false"}'>
+                                    <form action="./AddFriend" method="POST" id="myForm">
+                                        <input type="text" name="user" maxlength="20" size="10" id="pony" value="${requestScope.userId}" style="visibility:hidden" />
+                                        <input type="text" name="amigo" maxlength="20" size="10" id="pony" value="${requestScope.amigo}" style="visibility:hidden" />
+                                            <input type="submit" value="Add Friend" /></td>
+                                </form>
+                                </c:if>
                         </div>
+                         
+                         
+                         
                     	</div><!-- Contain me --->
                     </div>
                     </c:if>

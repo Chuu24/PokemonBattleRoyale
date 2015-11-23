@@ -198,6 +198,23 @@ h1, h2, h3, h4{
 	font-family:"Segoe UI";
 }
 
+#gts{
+	padding-left:15px;
+	padding-right:15px;
+	padding-top:20px;
+	padding-bottom:20px;
+	background-color:#F1F3F5;
+	width:45%;
+	height:auto;
+	-webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  	position: absolute;
+  	left: 50%;
+  	transform: translateX(-50%);
+	font-family:"Segoe UI";
+}
+
 #searchf{
 	padding-bottom:20px;
 	width:40%;

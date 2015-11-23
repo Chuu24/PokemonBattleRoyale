@@ -59,7 +59,7 @@ public class FriendRoster extends HttpServlet{
                  if(status == 1){
                     statStr="Accepted";
                 }else{
-                    statStr="Pending";
+                    statStr="Aceptar";
                 }
                 listaAmigos.add(new Amigo(name, user, idAmigo, statStr));
                 stattemp2.close();

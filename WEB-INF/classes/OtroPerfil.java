@@ -25,6 +25,7 @@ public class OtroPerfil extends HttpServlet{
             String country="";
             String correo="";
             String img="";
+            String yamigos;
             List<TeamPokemon> mainTeam = new ArrayList<>();
             
             while(rs.next()){
@@ -37,7 +38,7 @@ public class OtroPerfil extends HttpServlet{
             }
                 
             Statement stat1 = con.createStatement();
-            ResultSet rs1 = stat1.executeQuery("SELECT principal, nivel, apodo, c.identrenador, c.idpokemon, sprite, health FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND pe.identrenador = " + idUsuario + " AND c.identrenador = " + idUsuario + " AND c.idpokemon = p.idpokemon;");
+            ResultSet rs1 = stat1.executeQuery("SELECT principal, nivel, apodo, health, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND pe.identrenador = " + idUsuario + " AND c.identrenador = " + idUsuario + " AND c.idpokemon = p.idpokemon;");
             
             while(rs1.next()){
                 int idPoke = rs1.getInt("idpokemon");
@@ -61,8 +62,27 @@ public class OtroPerfil extends HttpServlet{
             request.setAttribute("img", img);
             request.setAttribute("mainTeam", mainTeam);
             
+            String idMio = (String) request.getSession().getAttribute("user");
+            
+            Statement stat2 = con.createStatement();
+            ResultSet rs2 = stat2.executeQuery("SELECT *  FROM amigos WHERE (idinvitador=\"" + idMio + "\" AND idinvitado=\"" + idUsuario + "\" ) OR (idinvitador=\"" + idUsuario + "\" AND idinvitado=\"" + idMio + "\" );");
+            if(rs2.next()){
+                yamigos="true";
+            }else{
+                yamigos="false";
+            }
+            
+            if(idUsuario.equals(idMio)){
+                yamigos="true";
+            }
+            
+            request.setAttribute("yamigos", yamigos);
+            request.setAttribute("userId", idMio);
+            request.setAttribute("amigo", idUsuario);
+            
             stat.close();
             stat1.close();
+            stat2.close();
             con.close();
 
             RequestDispatcher disp =  getServletContext().getRequestDispatcher("/profile.jsp");

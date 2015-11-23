@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class SetBattle extends HttpServlet{
     
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response){
+    public void doPost(HttpServletRequest request, HttpServletResponse response){
         try{
             String usuarioB = getServletContext().getInitParameter("usuario");
             String passB = getServletContext().getInitParameter("pass");
@@ -17,18 +17,14 @@ public class SetBattle extends HttpServlet{
             Connection con = DriverManager.getConnection(url,usuarioB,passB);
             
             String idUsuario = (String) request.getSession().getAttribute("user");
-            String idOponent = idUsuario;
+            String idOponent = request.getParameter("idOpon");
             
             Statement stat = con.createStatement();
-            ResultSet rs = stat.executeQuery("SELECT * FROM oponentes WHERE idprincipal = " + idUsuario + ";");
-
+            stat.executeUpdate("UPDATE oponentes SET idoponente = " + idOponent + " WHERE idprincipal = " + idUsuario + ";");
+            
             List<TeamPokemon> mainTeam = new ArrayList<>();
             List<TeamPokemon> oponTeam = new ArrayList<>();
             List<Ataque> ataques = new ArrayList<>();
-            
-            while(rs.next()){
-                idOponent = rs.getString("idoponente");
-            }
                 
             Statement stat1 = con.createStatement();
             ResultSet rs1 = stat1.executeQuery("SELECT principal, nivel, apodo, health, ataque1, ataque2, ataque3, ataque4, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND health > 0 AND pe.identrenador = " + idUsuario + " AND c.identrenador = " + idUsuario + " AND c.idpokemon = p.idpokemon;");
@@ -132,7 +128,15 @@ public class SetBattle extends HttpServlet{
     
     
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response){
-        doGet(request, response);
+    public void doGet(HttpServletRequest request, HttpServletResponse response){
+        try{
+            RequestDispatcher disp =  getServletContext().getRequestDispatcher("/battle");
+
+            if(disp!=null){
+                    disp.forward(request,response);
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }

@@ -7,20 +7,11 @@
         <title>Pokémon BattleRoyale</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="shortcut icon" href="img/icon.png">
-        
         <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/jquery.scrollbar.css" rel="stylesheet">
         <link href="css/templateGeneral.css" rel="stylesheet">
-        <link href="css/image-picker.css" rel="stylesheet">
-        <link href="css/dropit.css" rel="stylesheet">
-                
+        <link rel="shortcut icon" href="img/icon.png">
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/dropit.js"></script>
-        <script src="js/likeitshot.js"></script>
-        <script src="js/jquery.scrollbar.js"></script>
         <script src="js/otroperfiljuas.js"></script>
     </head>
     <body>
@@ -53,7 +44,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="./battle"><div class="col-md-1 friends">
+                <a href="battle.jsp"><div class="col-md-1 friends">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -62,20 +53,9 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <div class="col-md-1 profile">
+                <a href="./profile"><div class="col-md-1 profile">
                 	&nbsp;<p>
-                    <img src="img/profile.png"><br/>
-                    <ul class="menu list-unstyled">
-                        <li style="margin-top:-8px; margin-bottom:8px;">
-                            <a href="./profile">Profile</a>
-                            <ul>
-                                <li class="drop"><a href="#">Messages</a></li>
-                                <li class="drop"><a href="./friends">Friend list</a></li>
-                                <li class="drop"><a href="#">Settings</a></li>
-                                <li class="drop"><a href="#">Help</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <img src="img/profile.png"><br/>Profile
                 </div>
                 <div class="col-md-1"></div></a>
             </div>
@@ -83,13 +63,16 @@
         	<div class="row">
             	<div class="col-md-1"></div>
                 <div class="col-md-10 contenido">
+                <h1>Ratings</h1>
                     <div class="row salto">
-                        <div> &nbsp;<p> &nbsp;<p> &nbsp;<p> </div>
+                        <div> &nbsp;<p> </div>
+                        
                     </div>
                     <div class="row contenido">
-                        <div class="col-md-12">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6">
                             <div id="tablaCentral">
-                                <table class="table-responsive table-striped" style="width:100%" >
+                                <table class="table-responsive table-striped" id="ftable" >
                                 <tbody>
                                 <tr>
                                     <td>Position</td>
@@ -110,9 +93,10 @@
                                             <input type="submit" value="Ir" /></td>
                                 </form>
                             </div>
+                            <div class="col-md-3"></div>
                             
                         </div>
-                    </div>    
+                    </div> 
                 </div>
                 <div class="col-md-1"></div>
             </div>
