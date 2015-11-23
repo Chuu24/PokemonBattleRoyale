@@ -15,6 +15,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+
+DROP DATABASE IF EXISTS pokemons;
+CREATE DATABASE pokemons;
+USE pokemons;
+
 --
 -- Table structure for table `amigos`
 --
@@ -137,7 +142,7 @@ CREATE TABLE `efectividad_tipo` (
 
 LOCK TABLES `efectividad_tipo` WRITE;
 /*!40000 ALTER TABLE `efectividad_tipo` DISABLE KEYS */;
-INSERT INTO `efectividad_tipo` VALUES (1,1,0),(2,3,1),(2,4,1),(3,2,0),(3,3,0),(3,4,1),(4,6,0),(7,1,1);
+INSERT INTO `efectividad_tipo` VALUES (1,1,0),(2,3,1),(2,4,1),(3,2,0),(3,3,0),(3,4,1),(4,6,0),(5,2,1),(5,3,1),(6,1,1),(6,8,0),(7,1,1),(7,15,1),(8,5,1),(8,11,0),(9,3,0),(9,4,1),(10,1,0),(10,9,0),(11,2,1),(11,4,1),(12,2,0),(12,4,0),(13,8,1),(13,14,1),(14,16,0),(14,17,0),(15,1,1),(15,11,1),(16,3,1),(16,4,0),(17,2,0),(17,5,0);
 /*!40000 ALTER TABLE `efectividad_tipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +158,7 @@ CREATE TABLE `habilidades` (
   `nombre` varchar(50) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   PRIMARY KEY (`idhabilidad`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +167,7 @@ CREATE TABLE `habilidades` (
 
 LOCK TABLES `habilidades` WRITE;
 /*!40000 ALTER TABLE `habilidades` DISABLE KEYS */;
-INSERT INTO `habilidades` VALUES (1,'Chlorophyll','Boosts the Pokémon\'s Speed stat in sunshine.'),(2,'Overgrow','Powers up Grass-type moves when the Pokémon is in trouble.');
+INSERT INTO `habilidades` VALUES (1,'Chlorophyll','Boosts the Pokémon\'s Speed stat in sunshine.'),(2,'Overgrow','Powers up Grass-type moves when the Pokémon is in trouble.'),(3,'Clear Body','Prevents other Pokémon from lowering its stats.'),(4,'Anticipation','Senses a foe\'s dangerous moves.'),(5,'Drizzle','The Pokémon makes it rain when it enters a battle.'),(6,'Early Bird','The Pokémon awakens quickly from sleep.'),(7,'Run Away','Enables a sure getaway from wild Pokémon.'),(8,'Friend Guard','Reduces damage done to allies.'),(9,'Imposter','It transforms itself into the Pokémon it is facing.'),(10,'Primordial Sea	','Makes it rain heavily when the ability activates.'),(11,'Solid Rock','Reduces damage from supereffective attacks.'),(12,'Truant','Pokémon can\'t attack on consecutive turns.'),(13,'Zen Mode	','Changes the Pokémon\'s shape when HP is halved.'),(14,'Storm Drain	','Draws in all Water-type moves to up Sp. Attack.'),(15,'Super Luck','Heightens the critical-hit ratios of moves.'),(16,'Regenerator','Restores a little HP when withdrawn from battle.');
 /*!40000 ALTER TABLE `habilidades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -359,7 +364,7 @@ CREATE TABLE `pokemon_evolucion` (
 
 LOCK TABLES `pokemon_evolucion` WRITE;
 /*!40000 ALTER TABLE `pokemon_evolucion` DISABLE KEYS */;
-INSERT INTO `pokemon_evolucion` VALUES (1,2,1,'16'),(2,3,1,'32');
+INSERT INTO `pokemon_evolucion` VALUES (1,2,1,'16'),(2,3,1,'32'),(4,5,1,'16'),(5,6,1,'32'),(7,6,1,'16'),(8,9,1,'32'),(10,11,1,'16'),(11,12,1,'32'),(13,14,1,'16'),(14,15,1,'32'),(16,17,1,'16'),(152,153,1,'16'),(153,154,1,'32'),(155,156,1,'16'),(156,157,1,'32'),(158,159,1,'16'),(159,160,1,'32'),(161,162,1,'16'),(252,253,1,'16'),(253,254,1,'32'),(255,256,1,'16'),(256,257,1,'32'),(258,259,1,'16'),(259,260,1,'32'),(387,388,1,'16'),(388,389,1,'32'),(390,391,1,'16'),(391,392,1,'32'),(393,394,1,'16'),(394,395,1,'32'),(396,397,1,'16'),(397,398,1,'32'),(495,496,1,'16'),(496,497,1,'32'),(498,499,1,'16'),(499,500,1,'32'),(501,502,1,'16'),(502,503,1,'32'),(650,651,1,'16'),(651,652,1,'32'),(653,654,1,'16'),(654,655,1,'32'),(656,657,1,'16'),(657,658,1,'32');
 /*!40000 ALTER TABLE `pokemon_evolucion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -386,7 +391,7 @@ CREATE TABLE `pokemon_habilidad` (
 
 LOCK TABLES `pokemon_habilidad` WRITE;
 /*!40000 ALTER TABLE `pokemon_habilidad` DISABLE KEYS */;
-INSERT INTO `pokemon_habilidad` VALUES (1,1),(2,1),(3,1),(1,2),(2,2),(3,2);
+INSERT INTO `pokemon_habilidad` VALUES (1,1),(2,1),(3,1),(4,1),(9,1),(14,1),(154,1),(159,1),(254,1),(259,1),(390,1),(391,1),(396,1),(498,1),(503,1),(655,1),(1,2),(2,2),(3,2),(4,2),(9,2),(15,2),(154,2),(160,2),(254,2),(259,2),(391,2),(397,2),(498,2),(650,2),(655,2),(4,3),(10,3),(15,3),(155,3),(160,3),(254,3),(260,3),(391,3),(397,3),(498,3),(650,3),(655,3),(5,4),(10,4),(16,4),(155,4),(160,4),(255,4),(260,4),(392,4),(397,4),(499,4),(650,4),(656,4),(5,5),(10,5),(16,5),(155,5),(161,5),(255,5),(260,5),(392,5),(398,5),(499,5),(651,5),(656,5),(5,6),(11,6),(16,6),(156,6),(161,6),(255,6),(387,6),(392,6),(398,6),(499,6),(651,6),(656,6),(6,7),(11,7),(17,7),(156,7),(161,7),(256,7),(387,7),(393,7),(398,7),(500,7),(651,7),(657,7),(6,8),(11,8),(17,8),(156,8),(162,8),(256,8),(387,8),(393,8),(495,8),(500,8),(652,8),(657,8),(6,9),(12,9),(17,9),(157,9),(162,9),(256,9),(388,9),(393,9),(495,9),(500,9),(652,9),(658,9),(7,10),(12,10),(152,10),(157,10),(162,10),(257,10),(388,10),(394,10),(495,10),(501,10),(652,10),(658,10),(7,11),(12,11),(152,11),(157,11),(252,11),(257,11),(388,11),(394,11),(496,11),(501,11),(653,11),(658,11),(7,12),(13,12),(152,12),(158,12),(252,12),(257,12),(389,12),(394,12),(496,12),(501,12),(653,12),(8,13),(13,13),(153,13),(158,13),(252,13),(258,13),(389,13),(395,13),(496,13),(502,13),(653,13),(8,14),(13,14),(153,14),(158,14),(253,14),(258,14),(389,14),(395,14),(497,14),(502,14),(654,14),(8,15),(14,15),(153,15),(159,15),(253,15),(258,15),(390,15),(395,15),(497,15),(503,15),(654,15),(9,16),(14,16),(154,16),(159,16),(253,16),(259,16),(390,16),(396,16),(497,16),(503,16),(654,16);
 /*!40000 ALTER TABLE `pokemon_habilidad` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -413,7 +418,7 @@ CREATE TABLE `pokemon_tipo` (
 
 LOCK TABLES `pokemon_tipo` WRITE;
 /*!40000 ALTER TABLE `pokemon_tipo` DISABLE KEYS */;
-INSERT INTO `pokemon_tipo` VALUES (1,3),(2,3),(3,3);
+INSERT INTO `pokemon_tipo` VALUES (10,1),(11,1),(12,1),(13,1),(14,1),(15,1),(4,2),(5,2),(6,2),(155,2),(156,2),(157,2),(255,2),(256,2),(257,2),(390,2),(391,2),(392,2),(498,2),(499,2),(500,2),(653,2),(654,2),(655,2),(1,3),(2,3),(3,3),(152,3),(153,3),(154,3),(252,3),(253,3),(254,3),(387,3),(388,3),(389,3),(495,3),(496,3),(497,3),(650,3),(651,3),(652,3),(7,8),(8,8),(9,8),(158,8),(159,8),(160,8),(258,8),(259,8),(260,8),(393,8),(394,8),(395,8),(501,8),(502,8),(503,8),(656,8),(657,8),(658,8),(16,9),(17,9),(396,9),(397,9),(398,9),(161,11),(162,11);
 /*!40000 ALTER TABLE `pokemon_tipo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -493,4 +498,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-11-22 23:58:01
+-- Dump completed on 2015-11-23 13:38:55
