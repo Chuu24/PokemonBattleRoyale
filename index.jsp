@@ -29,6 +29,7 @@
         <script src="js/masonry.js"></script>
         <script src="js/image-picker.js"></script>
         <script src="js/register.js"></script>
+        <script src="js/index.js"></script>
         
     </head>
     <body>
@@ -61,7 +62,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="battle.jsp"><div class="col-md-1 friends">
+                <a href="./battle"><div class="col-md-1 friends">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -79,7 +80,6 @@
                             <ul>
                                 <li class="drop"><a href="#">Messages</a></li>
                                 <li class="drop"><a href="./friends">Friend list</a></li>
-                                <li class="drop"><a href="#">Find user</a></li>
                                 <li class="drop"><a href="#">Settings</a></li>
                                 <li class="drop"><a href="#">Help</a></li>
                             </ul>
@@ -94,16 +94,14 @@
                 <div class="col-md-10">
                 <div class="row contenido">
                     <div class="col-md-2">
-		      <form action="./AdInfo" method="POST">
+		      <form action="./AdInfo" method="POST" style="width:215px;">
                         <input type="text" class="search-bar" name="nombrePokemon"  maxlength="25" placeholder="Search" />
-			<input type="submit" value="Submit"/>
+			<input type="submit" value="" class="btn4"/>
 		      </form>
-		      <form action="./DesInfo" method="POST" id="myform" style="visibility:hidden;">
+		      <form action="./DesInfo" method="POST" id="myform" style="visibility:hidden; display:none;">
                         <input type="text" class="search-bar" name="nombrePokemonSel" id="nombrePokemonSel"  maxlength="25" placeholder="Search" />
-                        <input type="submit" value="Submit"/>
+                        <input type="submit" value="" class="btn3"/>
                       </form>
-                        <br />
-                        <br />
                         <div class="scrollbar-inner dex">
                        <c:choose>
                        <c:when test='${requestScope.busqueda  eq "true"}'>

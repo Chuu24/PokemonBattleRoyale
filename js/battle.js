@@ -18,12 +18,23 @@ Chat.connect = (function(host) {
     };
 
     Chat.socket.onclose = function () {
-        document.getElementById('chat').onkeydown = null;
-        Console.log('Info: WebSocket closed.');
+        $('#info-stuff').html("The battle has ended...");
+        Console.log('Battle has ended.');
     };
 
     Chat.socket.onmessage = function (message) {
-        Console.log(message.data);
+        var resp = JSON.parse(message.data);
+        if(typeof resp.myHealth !== 'undefined'){
+            $('#myHealth').html(resp.myHealth);
+            $('#hisHealth').html(resp.hisHealth);
+            $('#mainHealth').val(resp.myHealth);
+            $('#oponHealth').val(resp.hisHealth);
+            $('#info-stuff').html("Pick one attack...");
+            if(resp.myHealth < 1 || resp.hisHealth < 1){
+                window.location = "./battle";
+            }
+        }
+        Console.log(resp.respuesta);
     };
 });
 
@@ -36,7 +47,12 @@ Chat.initialize = function() {
 };
 
 Chat.sendMessage = (function() {
-    var message = attack;
+    var hisHealth = $('#oponHealth').val();
+    var hisLevel = $('#oponLevel').val();
+    var hisId = $('#oponPokeId').val();
+    var myId = $('#mainPokeId').val();
+    var message = attack + "," + hisHealth + "," + hisLevel + "," + hisId + "," + myId;
+    $('#info-stuff').html("Waiting for other user command...");
     if (message != '') {
         Chat.socket.send(message);
     }

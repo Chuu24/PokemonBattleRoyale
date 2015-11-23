@@ -7,12 +7,19 @@
         <title>Pok&eacute;mon BR</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="shortcut icon" href="img/icon.png">
+        
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/jquery.scrollbar.css" rel="stylesheet">
         <link href="css/templateGeneral.css" rel="stylesheet">
-        <link rel="shortcut icon" href="img/icon.png">
+        <link href="css/image-picker.css" rel="stylesheet">
+        <link href="css/dropit.css" rel="stylesheet">
+                
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/likeitshot.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
     </head>
     <body>
@@ -45,7 +52,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="battle.jsp"><div class="col-md-1 friends">
+                <a href="./battle"><div class="col-md-1 friends">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -54,9 +61,20 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <a href="./profile"><div class="col-md-1 profile selected9">
+                <div class="col-md-1 profile selected9">
                 	&nbsp;<p>
-                    <img src="img/profile.png"><br/>Profile
+                    <img src="img/profile.png"><br/>
+                    <ul class="menu list-unstyled">
+                        <li style="margin-top:-8px; margin-bottom:8px;">
+                            <a href="./profile">Profile</a>
+                            <ul>
+                                <li class="drop"><a href="#">Messages</a></li>
+                                <li class="drop"><a href="./friends">Friend list</a></li>
+                                <li class="drop"><a href="#">Settings</a></li>
+                                <li class="drop"><a href="#">Help</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-md-1"></div></a>
             </div>
@@ -78,7 +96,7 @@
                         
                     </div>
                 	<div class="row contenido">
-                    	<div class="containmemore">
+                    	<div class="containme">
                             <div id="register">
                             	<h3 style="font-family:'Xolo';">Profile</h3>
                                 <table class="table-responsive">

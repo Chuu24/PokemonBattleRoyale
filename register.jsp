@@ -21,7 +21,7 @@
         <script src="js/dropit.js"></script>
         <script src="js/likeitshot.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
         <script src="js/masonry.js"></script>
         <script src="js/image-picker.js"></script>
         <script src="js/register.js"></script>
@@ -57,7 +57,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="battle.jsp"><div class="col-md-1 friends">
+                <a href="./battle"><div class="col-md-1 friends">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -70,17 +70,16 @@
                 	&nbsp;<p>
                     <img src="img/profile.png"><br/>
                     <ul class="menu list-unstyled">
-    <li style="margin-top:-8px; margin-bottom:8px;">
-        <a href="./profile">Profile</a>
-        <ul>
-            <li class="drop"><a href="#">Messages</a></li>
-            <li class="drop"><a href="./friends">Friend list</a></li>
-            <li class="drop"><a href="#">Find user</a></li>
-            <li class="drop"><a href="#">Settings</a></li>
-            <li class="drop"><a href="#">Help</a></li>
-        </ul>
-    </li>
-</ul>
+                        <li style="margin-top:-8px; margin-bottom:8px;">
+                            <a href="./profile">Profile</a>
+                            <ul>
+                                <li class="drop"><a href="#">Messages</a></li>
+                                <li class="drop"><a href="./friends">Friend list</a></li>
+                                <li class="drop"><a href="#">Settings</a></li>
+                                <li class="drop"><a href="#">Help</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-md-1"></div>
             </div>

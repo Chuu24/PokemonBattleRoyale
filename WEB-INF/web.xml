@@ -240,4 +240,14 @@
         <servlet-name>OtroPerfil</servlet-name>
         <url-pattern>/OtroPerfil</url-pattern>
     </servlet-mapping>
+	
+	    <servlet>
+        <servlet-name>Find</servlet-name>
+        <servlet-class>BuscaUsuario</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>Find</servlet-name>
+        <url-pattern>/find</url-pattern>
+    </servlet-mapping>
 </web-app>

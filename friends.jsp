@@ -35,7 +35,7 @@
                 	<p>
                 	<img src="img/explore.png"><br/>Explore
                 </div></a>
-                <a href="pokecenter.jsp"><div class="col-md-1 center">
+                <a href="./pokecenter"><div class="col-md-1 center">
                 	&nbsp;<p>
                     <img src="img/medical.png"><br/>Pok&eacute;Center
                 </div></a>
@@ -53,7 +53,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="battle.jsp"><div class="col-md-1 friends">
+                <a href="./battle"><div class="col-md-1 friends">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -62,20 +62,19 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <div class="col-md-1 profile">
+                <div class="col-md-1 profile selected9">
                 	&nbsp;<p>
                     <img src="img/profile.png"><br/>
                     <ul class="menu list-unstyled">
-    <li style="margin-top:-8px; margin-bottom:8px;">
-        <a href="./profile">Profile</a>
-        <ul>
-            <li class="drop"><a href="#">Messages</a></li>
-            <li class="drop"><a href="#">Friend list</a></li>
-            <li class="drop"><a href="#">Find user</a></li>
-            <li class="drop"><a href="#">Settings</a></li>
-            <li class="drop"><a href="#">Help</a></li>
-        </ul>
-    </li>
+                <li style="margin-top:-8px; margin-bottom:8px;">
+                    <a href="./profile">Profile</a>
+                    <ul>
+                        <li class="drop"><a href="#">Messages</a></li>
+                        <li class="drop"><a href="#">Friend list</a></li>
+                        <li class="drop"><a href="#">Settings</a></li>
+                        <li class="drop"><a href="#">Help</a></li>
+                    </ul>
+                </li>
 </ul>
                 </div>
                 <div class="col-md-1"></div>
@@ -87,6 +86,8 @@
                 <div class="col-md-10">
                     <div class="row contenido">
                     	<div class="containme">
+                        	<h2 style="text-align:left; margin-left:12%;">Friends</h2>
+                            <br>
 							<div id="friend">
                                 <table class="table-responsive" >
                                 <tbody>
@@ -102,12 +103,12 @@
                                         <th style="text-align:center;">Status</th>
                                     </tr>
                                 	<tr>
-                                    	<td><img src="img/train/01.jpg"></td>
-                                        <td><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.userName}" /></a></td>
-                                        <td><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.nombre}" /></a></td>
-                                        <td>21</td>
-                                        <td>M</td>
-                                        <td><c:out value="${f.status}" /></td>
+                                    	<td width="10%"><img src="img/train/01.jpg"></td>
+                                        <td width="10%"><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.userName}" /></a></td>
+                                        <td width="40%"><a href="javascript:showProfile('${f.iD}');"><c:out value="${f.nombre}" /></a></td>
+                                        <td width="10%">21</td>
+                                        <td width="10%">M</td>
+                                        <td width="20%"><c:out value="${f.status}" /></td>
                                     </tr>
                                     <tr>
                                     	<td style="text-align:left;" colspan="6">
@@ -127,7 +128,54 @@
                                         <input type="text" name="user" maxlength="20" size="10" id="pony" />
                                             <input type="submit" value="Ir" /></td>
                                 </form>
-                            </div>                      
+                            </div>
+                            <div id="searchf">
+                            	<form action="./find" method="POST">
+                            	<table width="100%">
+                                	<tr>
+                                    	<td width="20%"></td>
+                                    	<td>Find user: </td>
+                                        <td style="text-align:center;">
+                                        <input name="find" type="text" size="25" maxlength="25" class="search-bar" style="height:30px;">
+                                        </td>
+                                        <td><input type="submit" value="" class="btn3"/></td>
+                                    </tr>
+                                </table>
+                                </form>
+                            </div>
+                            <div id="sresults">
+                            <table class="table-responsive" >
+                                <tbody>
+                                <c:forEach items="${requestScope.found}" var="f">
+                                    <tr>
+                                        <table id="ftable">
+                                	<tr>
+                                    	<th></th>
+                                        <th></th>
+                                        <th style="text-align:center;">Name</th>
+                                        <th style="text-align:center;">Age</th>
+                                        <th style="text-align:center;">Sex</th>
+                                    </tr>
+                                	<tr>
+                                    	<td width="10%"><img height="30px" width="18px" src="<c:out value="${f.sprite}" />"></td>
+                                        <td width="20%"><a href="javascript:showProfile('${f.idperfil}');"><c:out value="${f.username}" /></a></td>
+                                        <td width="40%"><a href="javascript:showProfile('${f.idperfil}');"><c:out value="${f.name}" /></a></td>
+                                        <td width="15%"><c:out value="${f.edad}" /></td>
+                                        <td width="15%">M</td>
+                                    </tr>
+                                    <tr>
+                                    	<td style="text-align:left;" colspan="6">
+                                        <img src="img/mail.png"> 
+                                        <img src="img/bat.png"> 
+                                        </td>
+                                    </tr>
+                                </table>
+                                    </tr>
+                                    
+                                </c:forEach>
+                                </tbody>
+                                </table>
+                            </div>
                     	</div><!-- Contain me --->
                     </div><!--Row Contenido --->
                 </div><!-- Col Md 10 --->

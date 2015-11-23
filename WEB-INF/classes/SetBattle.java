@@ -31,7 +31,7 @@ public class SetBattle extends HttpServlet{
             }
                 
             Statement stat1 = con.createStatement();
-            ResultSet rs1 = stat1.executeQuery("SELECT principal, nivel, apodo, health, ataque1, ataque2, ataque3, ataque4, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND pe.identrenador = " + idUsuario + " AND c.identrenador = " + idUsuario + " AND c.idpokemon = p.idpokemon;");
+            ResultSet rs1 = stat1.executeQuery("SELECT principal, nivel, apodo, health, ataque1, ataque2, ataque3, ataque4, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND health > 0 AND pe.identrenador = " + idUsuario + " AND c.identrenador = " + idUsuario + " AND c.idpokemon = p.idpokemon;");
             
             int x = 0;
             
@@ -53,6 +53,7 @@ public class SetBattle extends HttpServlet{
                         request.setAttribute("mainLvl", nivel);
                         request.setAttribute("mainNam", nickname);
                         request.setAttribute("mainHth", health);
+                        request.setAttribute("mainId", idPoke);
 
                         String ataq[] = {rs1.getString("ataque1"), rs1.getString("ataque2"), rs1.getString("ataque3"), rs1.getString("ataque4")};
                         for(int i = 0; i < ataq.length; i++){
@@ -75,7 +76,7 @@ public class SetBattle extends HttpServlet{
             }
                 
             Statement stat2 = con.createStatement();
-            ResultSet rs2 = stat2.executeQuery("SELECT principal, nivel, apodo, health, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND pe.identrenador = " + idOponent + " AND c.identrenador = " + idOponent + " AND c.idpokemon = p.idpokemon;");
+            ResultSet rs2 = stat2.executeQuery("SELECT principal, nivel, apodo, health, c.identrenador, c.idpokemon, sprite FROM pokemon_equipo AS pe, capturados AS c, pokemones AS p WHERE c.idpokemon = pe.idpokemon AND health > 0 AND pe.identrenador = " + idOponent + " AND c.identrenador = " + idOponent + " AND c.idpokemon = p.idpokemon;");
             x = 0;
             
             while(rs2.next()){
@@ -94,6 +95,7 @@ public class SetBattle extends HttpServlet{
                         request.setAttribute("oponLvl", nivel);
                         request.setAttribute("oponNam", nickname);
                         request.setAttribute("oponHth", health);
+                        request.setAttribute("oponId", idPoke);
                         
                         x++;
                     }
@@ -110,10 +112,18 @@ public class SetBattle extends HttpServlet{
             stat1.close();
             con.close();
 
-            RequestDispatcher disp =  getServletContext().getRequestDispatcher("/theBattle.jsp");
+            if(mainTeam.size() > 0 && oponTeam.size() > 0){
+                RequestDispatcher disp =  getServletContext().getRequestDispatcher("/theBattle.jsp");
 
-            if(disp!=null){
-                    disp.forward(request,response);
+                if(disp!=null){
+                        disp.forward(request,response);
+                }
+            } else{
+                RequestDispatcher disp =  getServletContext().getRequestDispatcher("/pokecenter");
+
+                if(disp!=null){
+                        disp.forward(request,response);
+                }
             }
         }catch(Exception e){
             e.printStackTrace();

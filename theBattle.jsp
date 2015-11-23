@@ -7,14 +7,24 @@
         <title>Pok&eacute;mon BattleRoyale</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="shortcut icon" href="img/icon.png">
+        
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/jquery.scrollbar.css" rel="stylesheet">
         <link href="css/templateGeneral.css" rel="stylesheet">
-        <link rel="shortcut icon" href="img/icon.png">
+        <link href="css/image-picker.css" rel="stylesheet">
+        <link href="css/dropit.css" rel="stylesheet">
+                
         <script src="js/jquery-1.11.3.min.js"></script>
         <script src="js/bootstrap.js"></script>
-        <script src="js/battle.js"></script>
+        <script src="js/dropit.js"></script>
+        <script src="js/likeitshot.js"></script>
         <script src="js/jquery.scrollbar.js"></script>
+        <script src="js/battle.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.js"></script>
+        <script src="js/masonry.js"></script>
+        <script src="js/image-picker.js"></script>
     </head>
     <body>
             <div class="row" id="header">
@@ -46,7 +56,7 @@
                     <img src="img/rate.png"><br/>
                     Ratings
                 </div></a>
-                <a href="battle.jsp"><div class="col-md-1 friends">
+                <a href="./battle"><div class="col-md-1 friends selected7">
                     &nbsp;<p>
                     <img src="img/battle.png"><br>
                     Battle
@@ -55,9 +65,20 @@
                 	&nbsp;<p>
                     <img src="img/team.png"><br/>My Team
                 </div></a>
-                <a href="./profile"><div class="col-md-1 profile">
+                <div class="col-md-1 profile">
                 	&nbsp;<p>
-                    <img src="img/profile.png"><br/>Profile
+                    <img src="img/profile.png"><br/>
+                    <ul class="menu list-unstyled">
+                        <li style="margin-top:-8px; margin-bottom:8px;">
+                            <a href="./profile">Profile</a>
+                            <ul>
+                                <li class="drop"><a href="#">Messages</a></li>
+                                <li class="drop"><a href="./friends">Friend list</a></li>
+                                <li class="drop"><a href="#">Settings</a></li>
+                                <li class="drop"><a href="#">Help</a></li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
                 <div class="col-md-1"></div></a>
             </div>
@@ -75,15 +96,21 @@
                                         <img src="${requestScope.mainImg}" class="img-responsive"/><br />
                                         ${requestScope.mainNam} - Level: ${requestScope.mainLvl}<br />
                                         Health: <div id="myHealth"> ${requestScope.mainHth} </div>
+                                        <input type="hidden" value="${requestScope.mainId}" id="mainPokeId" />
+                                        <input type="hidden" value="${requestScope.mainHth}" id="mainHealth" />
                                     </div>
                                     <div class="col-lg-6 log">
                                         <textarea id="battle-log" >
                                         </textarea>
+                                        <div id="info-stuff">Pick one attack...</div>
                                     </div>
                                     <div class="col-lg-3 currentPoke">
                                         <img src="${requestScope.oponImg}" class="img-responsive"/><br />
                                         ${requestScope.oponNam} - Level: ${requestScope.oponLvl}<br />
-                                        Health: <div id="hsiHealth"> ${requestScope.oponHth} </div>
+                                        Health: <div id="hisHealth"> ${requestScope.oponHth} </div>
+                                        <input type="hidden" value="${requestScope.oponId}" id="oponPokeId" />
+                                        <input type="hidden" value="${requestScope.oponHth}" id="oponHealth" />
+                                        <input type="hidden" value="${requestScope.oponLvl}" id="oponLevel" />
                                     </div>
                                 </div>
                                 <div class="row">
