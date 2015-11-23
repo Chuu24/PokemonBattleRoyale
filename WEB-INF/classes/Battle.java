@@ -168,7 +168,15 @@ public class Battle {
                     }
                 }
                 
+                Statement stat7 = con.createStatement();
+                stat7.executeUpdate("UPDATE oponentes SET idoponente = 0 WHERE idprincipal = " + idUsuario + ";");
+                
+                Statement stat8 = con.createStatement();
+                stat8.executeUpdate("UPDATE oponentes SET idoponente = 0 WHERE idprincipal = " + idOponent + ";");
+                
                 stat5.close();
+                stat7.close();
+                stat8.close();
             }
             
             Statement stat3 = con.createStatement();
