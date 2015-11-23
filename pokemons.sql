@@ -17,6 +17,7 @@
 
 
 DROP DATABASE IF EXISTS pokemons;
+
 CREATE DATABASE pokemons;
 USE pokemons;
 
