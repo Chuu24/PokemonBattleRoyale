@@ -131,9 +131,6 @@
                                     </table>
                                 </div>
                                 </c:forEach>
-                                <div class="add-team-2">
-                                    <img class="img-responsive" src="img/enLlamas.png" />
-                                </div>
                             </div>
                             <div class="row">
                                 &nbsp;
@@ -156,9 +153,6 @@
                                     </table>
                                 </div>
                                 </c:forEach>
-                                <div class="add-team">
-                                    <img class="img-responsive" src="img/enLlamas.png" />
-                                </div>
                             </div>
                         </div>
                         <div class="col-md-1"></div>
