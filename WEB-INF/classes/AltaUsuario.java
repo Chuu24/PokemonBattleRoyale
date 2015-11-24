@@ -68,7 +68,7 @@ public class AltaUsuario extends HttpServlet{
                     }
                     
                     Statement s2 = con.createStatement();
-                    s2.executeUpdate("INSERT INTO oponentes VALUES (\"" + idUsuario + "\",\"" + idUsuario + "\");");
+                    s2.executeUpdate("INSERT INTO oponentes VALUES (\"" + idUsuario + "\",\"0\");");
                     s2.close();
                     
                     s.close();
